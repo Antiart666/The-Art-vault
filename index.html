@@ -5,19 +5,28 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Miniatyrer och Antiart</title>
-        <link rel="stylesheet" href="style.css?v=154146" />
+        <link rel="stylesheet" href="style.css?v=155544" />
     </head>
     <body class="theme-home">
         
-        <header class="app-bar">
-            <a class="brand" href="index.html">
-                <img src="logo_main.png" alt="Portal" />
-            </a>
-            <div class="app-actions">
-                <a class="btn" href="index.html">Hem</a>
-                <a class="btn " href="val_suss.html">Miniatyrer</a>
-                <a class="btn " href="val_anti.html">Antiart</a>
+        <header class="top-shell">
+            <div class="top-left">
+                <nav class="top-nav" aria-label="Huvudnavigation">
+                    <a class="btn" href="index.html">Hem</a>
+                    <a class="btn " href="val_suss.html">Miniatyrer</a>
+                    <a class="btn " href="val_anti.html">Antiart</a>
+                </nav>
+                <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="Växla ljust och mörkt tema" onclick="toggleTheme()">
+                    <span class="switch-track"><span class="switch-thumb"></span></span>
+                    <span class="switch-label">Tema</span>
+                </button>
                 <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
+            </div>
+            <a class="top-logo" href="index.html">
+                <img src="logo_main.png" alt="The Art Vault" decoding="async" />
+            </a>
+            <div class="top-art-panel" aria-hidden="true">
+                <img src="background.jpg" alt="" decoding="async" />
             </div>
         </header>
         
@@ -33,7 +42,8 @@
 
         <div class="landing-hero">
             <div class="landing-hero-content landing-hero-surface">
-                <img class="landing-main-logo" src="logo_main.png" alt="The Art Vault" decoding="async" />
+                <p class="landing-hero-label">Konstportal</p>
+                <h1 class="landing-hero-title">Miniatyrer &amp; Antiart</h1>
                 <p class="landing-hero-sub">Välj konstnär för att utforska deras verk — två unika konstuttryck under ett tak.</p>
             </div>
         </div>
@@ -80,7 +90,7 @@
             <button type="button" onclick="toggleDrawer()">Meny</button>
         </nav>
         
-        <script src="app.js?v=154146"></script>
+        <script src="app.js?v=155544"></script>
     </body>
     </html>
     

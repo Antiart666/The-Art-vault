@@ -2,6 +2,28 @@
     let currentIdx = 0;
     let images = [];
 
+    function applyTheme(theme) {
+        document.body.setAttribute('data-theme', theme);
+        const toggles = document.querySelectorAll('[data-theme-toggle]');
+        toggles.forEach((btn) => {
+            btn.setAttribute('aria-pressed', String(theme === 'dark'));
+        });
+    }
+
+    function initTheme() {
+        const stored = localStorage.getItem('portal-theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = stored || (prefersDark ? 'dark' : 'light');
+        applyTheme(initial);
+    }
+
+    function toggleTheme() {
+        const current = document.body.getAttribute('data-theme') || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('portal-theme', next);
+    }
+
     function openLightbox(src, title, galleryArray) {
         images = galleryArray;
         const lb = document.getElementById('lightbox');
@@ -42,5 +64,9 @@
         }
         if (e.key === 'ArrowRight') changeImg(1);
         if (e.key === 'ArrowLeft') changeImg(-1);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
     });
     

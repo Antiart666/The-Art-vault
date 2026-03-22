@@ -5,19 +5,28 @@
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <title>Antiart - Mixed Media</title>
-            <link rel="stylesheet" href="style.css?v=154146" />
+            <link rel="stylesheet" href="style.css?v=155544" />
         </head>
         <body class="theme-anti">
             
-        <header class="app-bar">
-            <a class="brand" href="index.html">
-                <img src="logo_main.png" alt="Portal" />
-            </a>
-            <div class="app-actions">
-                <a class="btn" href="index.html">Hem</a>
-                <a class="btn " href="val_suss.html">Miniatyrer</a>
-                <a class="btn accent" href="val_anti.html">Antiart</a>
+        <header class="top-shell">
+            <div class="top-left">
+                <nav class="top-nav" aria-label="Huvudnavigation">
+                    <a class="btn" href="index.html">Hem</a>
+                    <a class="btn " href="val_suss.html">Miniatyrer</a>
+                    <a class="btn accent" href="val_anti.html">Antiart</a>
+                </nav>
+                <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="Växla ljust och mörkt tema" onclick="toggleTheme()">
+                    <span class="switch-track"><span class="switch-thumb"></span></span>
+                    <span class="switch-label">Tema</span>
+                </button>
                 <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
+            </div>
+            <a class="top-logo" href="index.html">
+                <img src="logo_main.png" alt="The Art Vault" decoding="async" />
+            </a>
+            <div class="top-art-panel" aria-hidden="true">
+                <img src="background.jpg" alt="" decoding="async" />
             </div>
         </header>
         
@@ -75,7 +84,7 @@
         <div id="lb-caption"></div>
     </div>
     
-            <script src="app.js?v=154146"></script>
+            <script src="app.js?v=155544"></script>
             <script>const currentGallery = [{'src': 'Antiart_tavlor/Mixed_Media/10 minutes to sundown... the girls are ready!.jpg', 'title': '10 minutes to sundown... the girls are ready!'}, {'src': 'Antiart_tavlor/Mixed_Media/A bent man empowers a gigant leap for a woman!.jpg', 'title': 'A bent man empowers a gigant leap for a woman!'}, {'src': 'Antiart_tavlor/Mixed_Media/A day at the beach.jpg', 'title': 'A day at the beach'}, {'src': 'Antiart_tavlor/Mixed_Media/A ride in the sky2.jpg', 'title': 'A ride in the sky2'}, {'src': 'Antiart_tavlor/Mixed_Media/A view to a kill.jpg', 'title': 'A view to a kill'}, {'src': 'Antiart_tavlor/Mixed_Media/A yuletide icebath.jpg', 'title': 'A yuletide icebath'}, {'src': 'Antiart_tavlor/Mixed_Media/Abstact hell #3.jpg', 'title': 'Abstact hell #3'}, {'src': 'Antiart_tavlor/Mixed_Media/As long as we are entertained we don´t care about anyone else.png', 'title': 'As long as we are entertained we don´t care about anyone else'}, {'src': 'Antiart_tavlor/Mixed_Media/Bat at night.jpg', 'title': 'Bat at night'}, {'src': 'Antiart_tavlor/Mixed_Media/Clash at the lighthouse.jpg', 'title': 'Clash at the lighthouse'}, {'src': 'Antiart_tavlor/Mixed_Media/Dawn at the lake.jpg', 'title': 'Dawn at the lake'}, {'src': 'Antiart_tavlor/Mixed_Media/Det finns inga dåliga kläder, bara dåliga väder.jpg', 'title': 'Det finns inga dåliga kläder, bara dåliga väder'}, {'src': 'Antiart_tavlor/Mixed_Media/Falling at the beach.jpg', 'title': 'Falling at the beach'}, {'src': 'Antiart_tavlor/Mixed_Media/Gigants playing in nature.jpg', 'title': 'Gigants playing in nature'}, {'src': 'Antiart_tavlor/Mixed_Media/Goatzilla.jpg', 'title': 'Goatzilla'}, {'src': 'Antiart_tavlor/Mixed_Media/Göingeflickorna goes nuclear!.jpg', 'title': 'Göingeflickorna goes nuclear!'}, {'src': 'Antiart_tavlor/Mixed_Media/I love Hjo!.jpg', 'title': 'I love Hjo!'}, {'src': 'Antiart_tavlor/Mixed_Media/Kärlek över Stjärnstigen 5, Laxå!.jpg', 'title': 'Kärlek över Stjärnstigen 5, Laxå!'}, {'src': 'Antiart_tavlor/Mixed_Media/Light after death 1.jpg', 'title': 'Light after death 1'}, {'src': 'Antiart_tavlor/Mixed_Media/Light after death 2.jpg', 'title': 'Light after death 2'}, {'src': 'Antiart_tavlor/Mixed_Media/Lila solnedgång.jpg', 'title': 'Lila solnedgång'}, {'src': 'Antiart_tavlor/Mixed_Media/Love at the lake.jpg', 'title': 'Love at the lake'}, {'src': 'Antiart_tavlor/Mixed_Media/Making the clouds.jpg', 'title': 'Making the clouds'}, {'src': 'Antiart_tavlor/Mixed_Media/Monster in autum.jpg', 'title': 'Monster in autum'}, {'src': 'Antiart_tavlor/Mixed_Media/Morfar Ture och jag på Ålandsvägen 86 i Laxå.jpg', 'title': 'Morfar Ture och jag på Ålandsvägen 86 i Laxå'}, {'src': 'Antiart_tavlor/Mixed_Media/Pew pew!.jpg', 'title': 'Pew pew!'}, {'src': 'Antiart_tavlor/Mixed_Media/Placing that ball.jpg', 'title': 'Placing that ball'}, {'src': 'Antiart_tavlor/Mixed_Media/Pocketing the sunball.jpg', 'title': 'Pocketing the sunball'}, {'src': 'Antiart_tavlor/Mixed_Media/Reading at Draculas castle.jpg', 'title': 'Reading at Draculas castle'}, {'src': 'Antiart_tavlor/Mixed_Media/Rom 3 - Flygning över Pantheon.jpg', 'title': 'Rom 3 - Flygning över Pantheon'}, {'src': 'Antiart_tavlor/Mixed_Media/Rom 4 - Vila vid Forum Romanum.jpg', 'title': 'Rom 4 - Vila vid Forum Romanum'}, {'src': 'Antiart_tavlor/Mixed_Media/Rome 1 - Paraplytallar vid circus maximus.jpg', 'title': 'Rome 1 - Paraplytallar vid circus maximus'}, {'src': 'Antiart_tavlor/Mixed_Media/Rome 2 - Via Guliana.jpg', 'title': 'Rome 2 - Via Guliana'}, {'src': 'Antiart_tavlor/Mixed_Media/Skip the sunrise.jpg', 'title': 'Skip the sunrise'}, {'src': 'Antiart_tavlor/Mixed_Media/Slaget vid Hönö.jpg', 'title': 'Slaget vid Hönö'}, {'src': 'Antiart_tavlor/Mixed_Media/Small details on the fourth day.jpg', 'title': 'Small details on the fourth day'}, {'src': 'Antiart_tavlor/Mixed_Media/Snow robot.jpg', 'title': 'Snow robot'}, {'src': 'Antiart_tavlor/Mixed_Media/Snowalien.jpg', 'title': 'Snowalien'}, {'src': 'Antiart_tavlor/Mixed_Media/Sorry to disturbe yor art!.jpg', 'title': 'Sorry to disturbe yor art!'}, {'src': 'Antiart_tavlor/Mixed_Media/Stomping terror!.jpg', 'title': 'Stomping terror!'}, {'src': 'Antiart_tavlor/Mixed_Media/STOPP! Min kropp...jpg', 'title': 'STOPP! Min kropp..'}, {'src': 'Antiart_tavlor/Mixed_Media/Sänka skepp.jpg', 'title': 'Sänka skepp'}, {'src': 'Antiart_tavlor/Mixed_Media/the icequeeen is a poser.jpg', 'title': 'the icequeeen is a poser'}, {'src': 'Antiart_tavlor/Mixed_Media/The mighty foot of the Lord!.jpg', 'title': 'The mighty foot of the Lord!'}, {'src': 'Antiart_tavlor/Mixed_Media/There goes the neighbourhood.jpg', 'title': 'There goes the neighbourhood'}, {'src': 'Antiart_tavlor/Mixed_Media/Titta där!.jpg', 'title': 'Titta där!'}, {'src': 'Antiart_tavlor/Mixed_Media/Varde Ljus.jpg', 'title': 'Varde Ljus'}, {'src': 'Antiart_tavlor/Mixed_Media/Village.jpg', 'title': 'Village'}, {'src': 'Antiart_tavlor/Mixed_Media/Washday of the gods (1).jpg', 'title': 'Washday of the gods (1)'}, {'src': 'Antiart_tavlor/Mixed_Media/Weeeeee!.jpg', 'title': 'Weeeeee!'}, {'src': 'Antiart_tavlor/Mixed_Media/What happens in the wood stays in the woods!.jpg', 'title': 'What happens in the wood stays in the woods!'}, {'src': 'Antiart_tavlor/Mixed_Media/When none hears the the tree falls in hte forset, they emerge! Ver 2.jpg', 'title': 'When none hears the the tree falls in hte forset, they emerge! Ver 2'}];</script>
         </body>
         </html>
