@@ -123,7 +123,7 @@ def app_bar(active_artist):
         <div class="top-shell-controls">
             <nav class="top-nav" aria-label="Huvudnavigation">
                 <a class="btn" href="index.html">Hem</a>
-                <a class="btn {lostrom_active}" href="val_suss.html">Miniatyrier</a>
+                <a class="btn {lostrom_active}" href="val_suss.html">Miniatyrer</a>
                 <a class="btn {anti_active}" href="val_anti.html">Antiart</a>
             </nav>
             <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="Växla ljust och mörkt tema" onclick="toggleTheme()">
