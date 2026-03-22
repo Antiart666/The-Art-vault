@@ -25,7 +25,7 @@ body {
     margin: 0;
     font-family: "Trebuchet MS", "Segoe UI", sans-serif;
     color: var(--text);
-    background: url('background.jpg') center / cover no-repeat fixed;
+    background: linear-gradient(180deg, #edf2f7 0%, #e3eaf4 100%);
     min-height: 100vh;
     padding-bottom: 92px;
 }
@@ -34,7 +34,7 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(rgba(8, 12, 20, 0.62), rgba(8, 12, 20, 0.62));
+    background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
     pointer-events: none;
     z-index: -1;
 }
@@ -527,33 +527,49 @@ img {
 /* ─── Landing hero med background.jpg ─── */
 .landing-hero {
     position: relative;
-    min-height: clamp(260px, 50vh, 520px);
+    min-height: clamp(220px, 44vh, 380px);
     background: transparent;
-    display: flex;
-    align-items: flex-end;
+    display: grid;
+    align-items: end;
+    padding: clamp(18px, 3.8vw, 36px) 14px 0;
 }
 
 .landing-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to top,
-        rgba(8, 10, 22, 0.88) 0%,
-        rgba(8, 10, 22, 0.45) 55%,
-        rgba(8, 10, 22, 0.18) 100%
-    );
-    pointer-events: none;
+    content: none;
 }
 
 .landing-hero-content {
     position: relative;
-    z-index: 1;
-    padding: clamp(22px, 6vw, 56px) clamp(16px, 4vw, 56px);
+    z-index: 2;
+    padding: clamp(22px, 5vw, 42px) clamp(16px, 4vw, 52px);
     color: white;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+}
+
+.landing-hero-surface {
+    position: relative;
+    overflow: hidden;
+    border-radius: clamp(20px, 4vw, 32px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background:
+        linear-gradient(155deg, rgba(6, 10, 15, 0.86), rgba(14, 20, 30, 0.76)),
+        url('background.jpg') center / contain no-repeat,
+        rgba(8, 12, 20, 0.96);
+    box-shadow: var(--md-elev-3);
+    display: grid;
+    justify-items: center;
+    gap: clamp(14px, 2.4vw, 20px);
+    text-align: center;
+    animation: heroRise 560ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.landing-main-logo {
+    width: clamp(240px, 48vw, 620px);
+    max-height: clamp(110px, 19vw, 220px);
+    object-fit: contain;
+    filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.38));
 }
 
 .landing-hero-label {
@@ -575,10 +591,86 @@ img {
 
 .landing-hero-sub {
     margin: 0;
-    max-width: 56ch;
+    max-width: 62ch;
     font-size: clamp(0.98rem, 2.8vw, 1.12rem);
     line-height: 1.6;
-    opacity: 0.9;
+    opacity: 0.94;
+}
+
+.artist-hub-wrap {
+    display: grid;
+    margin-top: 16px;
+}
+
+.artist-hub-module {
+    padding: clamp(18px, 3.2vw, 30px);
+    background: var(--artist-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--md-elev-2);
+    display: grid;
+    grid-template-columns: minmax(220px, 360px) minmax(0, 1fr);
+    gap: clamp(16px, 2.8vw, 28px);
+    align-items: start;
+}
+
+.artist-hub-media {
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.92);
+    min-height: clamp(220px, 30vw, 360px);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.artist-hub-media img {
+    width: 100%;
+    height: clamp(220px, 30vw, 340px);
+    object-fit: contain;
+    padding: 16px;
+}
+
+.artist-hub-body h1 {
+    margin: 0;
+    font-size: clamp(1.45rem, 4.4vw, 2.2rem);
+    line-height: 1.2;
+}
+
+.artist-hub-body p {
+    margin: 10px 0 0;
+    color: var(--muted);
+    max-width: 62ch;
+    line-height: 1.6;
+}
+
+.artist-hub-kicker {
+    margin: 0 0 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.artist-hub-module .breadcrumb {
+    margin-top: 14px;
+    color: var(--text);
+}
+
+.artist-hub-module .breadcrumb a {
+    color: inherit;
+    text-decoration-color: rgba(0, 0, 0, 0.35);
+}
+
+.artist-hub-module .artist-nav {
+    margin-top: 16px;
+}
+
+.artist-link.home-link {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: transparent;
+    font-weight: 700;
 }
 
 /* ─── Konstnärskort (MD3 elevated cards) ─── */
@@ -601,6 +693,11 @@ img {
     transition: box-shadow 0.28s ease, transform 0.28s ease;
     text-decoration: none;
     color: inherit;
+    animation: cardRise 580ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.artist-feature-card:nth-child(2) {
+    animation-delay: 90ms;
 }
 
 .artist-feature-card:hover {
@@ -651,6 +748,10 @@ img {
     .artist-showcase {
         grid-template-columns: 1fr;
     }
+
+    .artist-hub-module {
+        grid-template-columns: 1fr;
+    }
 }
 
 .artist-feature-card .card-label {
@@ -695,11 +796,108 @@ img {
 .artist-feature-card:hover .md3-explore-btn {
     filter: brightness(1.12);
 }
+
+@keyframes heroRise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardRise {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .landing-hero-surface,
+    .artist-feature-card {
+        animation: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .landing-hero {
+        min-height: clamp(180px, 36vh, 280px);
+        padding-top: 18px;
+    }
+
+    .landing-hero-content {
+        padding: clamp(18px, 4vw, 28px) clamp(14px, 4vw, 24px);
+    }
+
+    .landing-main-logo {
+        width: clamp(220px, 70vw, 480px);
+        max-height: clamp(96px, 24vw, 170px);
+    }
+
+    .landing-hero-sub {
+        max-width: 44ch;
+    }
+}
+
+@media (max-width: 520px) {
+    .landing-hero {
+        padding-left: 10px;
+        padding-right: 10px;
+        min-height: clamp(170px, 34vh, 240px);
+    }
+
+    .landing-hero-surface {
+        border-radius: 18px;
+        gap: 12px;
+    }
+
+    .landing-main-logo {
+        width: clamp(210px, 78vw, 360px);
+        max-height: 120px;
+    }
+
+    .landing-hero-sub {
+        font-size: clamp(0.9rem, 4.1vw, 1rem);
+        line-height: 1.5;
+    }
+}
+
+@media (min-width: 390px) and (max-width: 430px) {
+    .landing-hero {
+        min-height: 270px;
+        padding-top: 22px;
+    }
+
+    .landing-hero-content {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .landing-main-logo {
+        width: 84vw;
+        max-width: 400px;
+        max-height: 138px;
+    }
+
+    .landing-hero-sub {
+        font-size: 0.96rem;
+    }
+}
 """
 
 
 def slug_folder(folder_name):
-    return folder_name.lower().replace(" ", "_")
+    folder_slug = folder_name.lower().replace(" ", "_")
+    if folder_slug == "loströms_miniatyrer":
+        return "miniatyrer"
+    return folder_slug
 
 
 def slug_page(folder_name, cat_name):
@@ -834,7 +1032,7 @@ def bygg():
             </a>
             <div class="app-actions">
                 <a class="btn" href="index.html">Hem</a>
-                <a class="btn {lostrom_active}" href="val_suss.html">Loströms</a>
+                <a class="btn {lostrom_active}" href="val_suss.html">Miniatyrer</a>
                 <a class="btn {anti_active}" href="val_anti.html">Antiart</a>
                 <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
             </div>
@@ -871,7 +1069,7 @@ def bygg():
             <div class="drawer-links">{links}</div>
             <div class="drawer-links" style="margin-top:10px;">
                 <a href="index.html">Hem</a>
-                <a href="val_suss.html">Loströms nav</a>
+                <a href="val_suss.html">Miniatyrer nav</a>
                 <a href="val_anti.html">Antiart nav</a>
             </div>
         </div>
@@ -893,7 +1091,7 @@ def bygg():
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Loströms miniatyrer och Antiart</title>
+        <title>Miniatyrer och Antiart</title>
         <link rel="stylesheet" href="style.css?v={ts}" />
     </head>
     <body class="theme-home">
@@ -902,14 +1100,15 @@ def bygg():
             <h3>Portalmeny</h3>
             <div class="drawer-links">
                 <a href="index.html">Hem</a>
-                <a href="val_suss.html">Loströms miniatyrer</a>
+                <a href="val_suss.html">Miniatyrer</a>
                 <a href="val_anti.html">Antiart</a>
             </div>
         </div>
         <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
 
         <div class="landing-hero">
-            <div class="landing-hero-content">
+            <div class="landing-hero-content landing-hero-surface">
+                <img class="landing-main-logo" src="logo_main.png" alt="The Art Vault" decoding="async" />
                 <p class="landing-hero-sub">Välj konstnär för att utforska deras verk — två unika konstuttryck under ett tak.</p>
             </div>
         </div>
@@ -917,11 +1116,11 @@ def bygg():
         <div class="artist-showcase">
             <a class="artist-feature-card card-lostrom" href="val_suss.html">
                 <div class="portrait-wrap">
-                    <img src="logo_suss.jpg" alt="Loströms miniatyrer" decoding="async" />
+                    <img src="logo_suss.jpg" alt="Miniatyrer" decoding="async" />
                 </div>
                 <div class="card-body">
                     <p class="card-label">Miniatyrer &amp; Dioraman</p>
-                    <h2>Loströms miniatyrer</h2>
+                    <h2>Miniatyrer</h2>
                     <p class="desc">Miniatyrbord, dioraman och utställningssamling. Detaljrikt hantverk i liten skala.</p>
                     <div class="chips">
                         <span class="chip">Bord</span>
@@ -973,21 +1172,20 @@ def bygg():
             {app_bar(artist_key)}
             {artist_drawer(items, '', title + ' arkiv')}
             <main class="page" style="display:block;">
-                <section class="hero">
-                    <h1>{title}</h1>
-                    <p>{subtitle}</p>
-                    <nav class="breadcrumb" aria-label="Breadcrumb">
-                        <a href="index.html">Hem</a>
-                        <span class="sep">/</span>
-                        <span class="current">{title}</span>
-                    </nav>
-                </section>
-                <section class="artist-grid">
-                    <article class="card portal-card">
-                        <div class="logo-wrap"><img src="{logo}" alt="{title}" decoding="async" /></div>
-                        <h2>{title}</h2>
-                        <p>Utforska alla gallerier i denna sektion.</p>
-                        <div class="artist-nav">{nav_links}</div>
+                <section class="artist-hub-wrap">
+                    <article class="card artist-hub-module">
+                        <div class="artist-hub-media"><img src="{logo}" alt="{title}" decoding="async" /></div>
+                        <div class="artist-hub-body">
+                            <p class="artist-hub-kicker">Konstnärssektion</p>
+                            <h1>{title}</h1>
+                            <p>{subtitle}</p>
+                            <nav class="breadcrumb" aria-label="Breadcrumb">
+                                <a href="index.html">Hem</a>
+                                <span class="sep">/</span>
+                                <span class="current">{title}</span>
+                            </nav>
+                            <div class="artist-nav"><a class="artist-link home-link" href="index.html">Hem</a>{nav_links}</div>
+                        </div>
                     </article>
                 </section>
             </main>
@@ -1002,7 +1200,7 @@ def bygg():
     artist_hub(
         "val_suss.html",
         "theme-lostrom",
-        "Loströms miniatyrer",
+        "Miniatyrer",
         "Miniatyrer med tydligt fokus på dioraman, bord och utställning.",
         "logo_suss.jpg",
         "lostrom",
@@ -1024,7 +1222,7 @@ def bygg():
         is_anti = "Antiart" in item["folder"]
         theme_class = "theme-anti" if is_anti else "theme-lostrom"
         artist_hub_url = "val_anti.html" if is_anti else "val_suss.html"
-        artist_name = "Antiart" if is_anti else "Loströms miniatyrer"
+        artist_name = "Antiart" if is_anti else "Miniatyrer"
         artist_items = anti_categories if is_anti else lostrom_categories
         artist_key = "anti" if is_anti else "lostrom"
 
