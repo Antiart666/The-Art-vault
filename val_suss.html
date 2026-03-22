@@ -1,74 +1,73 @@
 
-        <!DOCTYPE html>
-        <html lang="sv">
-        <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Miniatyrer</title>
-            <link rel="stylesheet" href="style.css?v=160814" />
-        </head>
-        <body class="theme-lostrom">
-            
-        <header class="top-shell">
-            <p class="top-shell-intro">Miniatyrer och Antiart. Välj konstnär för att utforska deras verk.</p>
-            <div class="top-left">
-                <nav class="top-nav" aria-label="Huvudnavigation">
-                    <a class="btn" href="index.html">Hem</a>
-                    <a class="btn accent" href="val_suss.html">Miniatyrer</a>
-                    <a class="btn " href="val_anti.html">Antiart</a>
-                </nav>
-                <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="Växla ljust och mörkt tema" onclick="toggleTheme()">
-                    <span class="switch-track"><span class="switch-thumb"></span></span>
-                    <span class="switch-label">Tema</span>
-                </button>
-                <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
-            </div>
-            <a class="top-logo" href="index.html">
-                <img src="logo_main.png" alt="The Art Vault" decoding="async" />
-            </a>
-            <div class="top-art-panel" aria-hidden="true">
-                <img src="background.jpg" alt="" decoding="async" />
-            </div>
-        </header>
-        
-            
-        <div id="drawer" class="drawer">
-            <h3>Miniatyrer arkiv</h3>
-            <div class="drawer-links"><a class="" href="miniatyrer_bord.html">Bord</a><a class="" href="miniatyrer_dioraman.html">Dioraman</a><a class="" href="utställning_wadköping_samling.html">Samling</a></div>
-            <div class="drawer-links" style="margin-top:10px;">
-                <a href="index.html">Hem</a>
-                <a href="val_suss.html">Miniatyrer nav</a>
-                <a href="val_anti.html">Antiart nav</a>
-            </div>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miniatyrer</title>
+    <link rel="stylesheet" href="style.css?v=164424" />
+</head>
+<body class="theme-lostrom">
+    
+    <header class="top-shell">
+        <p class="top-shell-intro">Miniatyrer och Antiart. Välj konstnär för att utforska deras verk.</p>
+        <div class="top-left">
+            <nav class="top-nav" aria-label="Huvudnavigation">
+                <a class="btn" href="index.html">Hem</a>
+                <a class="btn accent" href="val_suss.html">Miniatyrer</a>
+                <a class="btn " href="val_anti.html">Antiart</a>
+            </nav>
+            <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="Växla ljust och mörkt tema" onclick="toggleTheme()">
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+                <span class="switch-label">Tema</span>
+            </button>
+            <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
         </div>
-        <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
-        
-            <main class="page" style="display:block;">
-                <section class="artist-hub-wrap">
-                    <article class="card artist-hub-module">
-                        <div class="artist-hub-media"><img src="logo_suss.jpg" alt="Miniatyrer" decoding="async" /></div>
-                        <div class="artist-hub-body">
-                            <p class="artist-hub-kicker">Konstnärssektion</p>
-                            <h1>Miniatyrer</h1>
-                            <p>Miniatyrer med tydligt fokus på dioraman, bord och utställning.</p>
-                            <nav class="breadcrumb" aria-label="Breadcrumb">
-                                <a href="index.html">Hem</a>
-                                <span class="sep">/</span>
-                                <span class="current">Miniatyrer</span>
-                            </nav>
-                            <div class="artist-nav"><a class="artist-link home-link" href="index.html">Hem</a><a class="artist-link" href="miniatyrer_bord.html">Bord</a><a class="artist-link" href="miniatyrer_dioraman.html">Dioraman</a><a class="artist-link" href="utställning_wadköping_samling.html">Samling</a></div>
-                        </div>
-                    </article>
-                </section>
-            </main>
-            
-        <nav class="bottom-nav">
-            <a class="" href="index.html">Hem</a>
-            <a class="active" href="val_suss.html">Artister</a>
-            <button type="button" onclick="toggleDrawer()">Meny</button>
-        </nav>
-        
-            <script src="app.js?v=160814"></script>
-        </body>
-        </html>
-        
+        <a class="top-logo" href="index.html">
+            <img src="logo_main.png" alt="The Art Vault" decoding="async" />
+        </a>
+        <div class="top-art-panel" aria-hidden="true">
+            <img src="background.jpg" alt="" decoding="async" />
+        </div>
+    </header>
+    
+    
+    <div id="drawer" class="drawer">
+        <h3>Miniatyrer arkiv</h3>
+        <div class="drawer-links"><a class="" href="miniatyrer_bord.html">Bord</a><a class="" href="miniatyrer_dioraman.html">Dioraman</a><a class="" href="utställning_wadköping_samling.html">Samling</a></div>
+        <div class="drawer-links" style="margin-top:10px;">
+            <a href="index.html">Hem</a>
+            <a href="val_suss.html">Miniatyrer nav</a>
+            <a href="val_anti.html">Antiart nav</a>
+        </div>
+    </div>
+    <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
+    
+    <main class="page" style="display:block;">
+        <section class="artist-hub-wrap">
+            <article class="card artist-hub-module">
+                <div class="artist-hub-media"><img src="logo_suss.jpg" alt="Miniatyrer" decoding="async" /></div>
+                <div class="artist-hub-body">
+                    <p class="artist-hub-kicker">Konstnärssektion</p>
+                    <h1>Miniatyrer</h1>
+                    <p>Miniatyrer med tydligt fokus på dioraman, bord och utställning.</p>
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <a href="index.html">Hem</a>
+                        <span class="sep">/</span>
+                        <span class="current">Miniatyrer</span>
+                    </nav>
+                    <div class="artist-nav"><a class="artist-link home-link" href="index.html">Hem</a><a class="artist-link" href="miniatyrer_bord.html">Bord</a><a class="artist-link" href="miniatyrer_dioraman.html">Dioraman</a><a class="artist-link" href="utställning_wadköping_samling.html">Samling</a></div>
+                </div>
+            </article>
+        </section>
+    </main>
+    
+    <nav class="bottom-nav">
+        <a class="" href="index.html">Hem</a>
+        <a class="active" href="val_suss.html">Artister</a>
+        <button type="button" onclick="toggleDrawer()">Meny</button>
+    </nav>
+    
+    <script src="app.js?v=164424"></script>
+</body>
+</html>

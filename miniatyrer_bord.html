@@ -1,92 +1,91 @@
 
-        <!DOCTYPE html>
-        <html lang="sv">
-        <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Miniatyrer - Bord</title>
-            <link rel="stylesheet" href="style.css?v=160814" />
-        </head>
-        <body class="theme-lostrom">
-            
-        <header class="top-shell">
-            <p class="top-shell-intro">Miniatyrer och Antiart. Välj konstnär för att utforska deras verk.</p>
-            <div class="top-left">
-                <nav class="top-nav" aria-label="Huvudnavigation">
-                    <a class="btn" href="index.html">Hem</a>
-                    <a class="btn accent" href="val_suss.html">Miniatyrer</a>
-                    <a class="btn " href="val_anti.html">Antiart</a>
-                </nav>
-                <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="Växla ljust och mörkt tema" onclick="toggleTheme()">
-                    <span class="switch-track"><span class="switch-thumb"></span></span>
-                    <span class="switch-label">Tema</span>
-                </button>
-                <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
-            </div>
-            <a class="top-logo" href="index.html">
-                <img src="logo_main.png" alt="The Art Vault" decoding="async" />
-            </a>
-            <div class="top-art-panel" aria-hidden="true">
-                <img src="background.jpg" alt="" decoding="async" />
-            </div>
-        </header>
-        
-            
-        <div id="drawer" class="drawer">
-            <h3>Miniatyrer arkiv</h3>
-            <div class="drawer-links"><a class="active" href="miniatyrer_bord.html">Bord</a><a class="" href="miniatyrer_dioraman.html">Dioraman</a><a class="" href="utställning_wadköping_samling.html">Samling</a></div>
-            <div class="drawer-links" style="margin-top:10px;">
-                <a href="index.html">Hem</a>
-                <a href="val_suss.html">Miniatyrer nav</a>
-                <a href="val_anti.html">Antiart nav</a>
-            </div>
-        </div>
-        <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
-        
-            <main class="page">
-                
-        <aside class="desktop-sidebar">
-            <h3>Miniatyrer arkiv</h3>
-            <div class="drawer-links"><a class="active" href="miniatyrer_bord.html">Bord</a><a class="" href="miniatyrer_dioraman.html">Dioraman</a><a class="" href="utställning_wadköping_samling.html">Samling</a></div>
-            <div class="drawer-links" style="margin-top:10px;">
-                <a href="index.html">Hem</a>
-            </div>
-        </aside>
-        
-                <section class="content">
-                    <section class="hero">
-                        <h1>Miniatyrer / Bord</h1>
-                        <p>Du är i den här sektionen. Byt galleri via artistmenyn eller gå tillbaka till Hem.</p>
-                        <nav class="breadcrumb" aria-label="Breadcrumb">
-                            <a href="index.html">Hem</a>
-                            <span class="sep">/</span>
-                            <a href="val_suss.html">Miniatyrer</a>
-                            <span class="sep">/</span>
-                            <span class="current">Bord</span>
-                        </nav>
-                        <div class="artist-nav"><a class="artist-link active" href="miniatyrer_bord.html">Bord</a><a class="artist-link " href="miniatyrer_dioraman.html">Dioraman</a><a class="artist-link " href="utställning_wadköping_samling.html">Samling</a></div>
-                    </section>
-                    <section class="gallery-grid"><article class="card gallery-card" onclick="openLightbox('Loströms_miniatyrer/Bord/140724-1.jpg', '140724-1', currentGallery)"><img src="Loströms_miniatyrer/Bord/140724-1.jpg" alt="140724-1" loading="lazy" decoding="async" /><div class="gallery-title">140724-1</div></article><article class="card gallery-card" onclick="openLightbox('Loströms_miniatyrer/Bord/140724-2.jpg', '140724-2', currentGallery)"><img src="Loströms_miniatyrer/Bord/140724-2.jpg" alt="140724-2" loading="lazy" decoding="async" /><div class="gallery-title">140724-2</div></article><article class="card gallery-card" onclick="openLightbox('Loströms_miniatyrer/Bord/140724-5.jpg', '140724-5', currentGallery)"><img src="Loströms_miniatyrer/Bord/140724-5.jpg" alt="140724-5" loading="lazy" decoding="async" /><div class="gallery-title">140724-5</div></article><article class="card gallery-card" onclick="openLightbox('Loströms_miniatyrer/Bord/140724-7.jpg', '140724-7', currentGallery)"><img src="Loströms_miniatyrer/Bord/140724-7.jpg" alt="140724-7" loading="lazy" decoding="async" /><div class="gallery-title">140724-7</div></article></section>
-                </section>
-            </main>
-            
-        <nav class="bottom-nav">
-            <a class="" href="index.html">Hem</a>
-            <a class="active" href="val_suss.html">Artister</a>
-            <button type="button" onclick="toggleDrawer()">Meny</button>
-        </nav>
-        
-            
-    <div id="lightbox">
-        <button id="lb-close" class="lb-btn" onclick="closeLightbox()">x</button>
-        <button id="lb-prev" class="lb-btn" onclick="changeImg(-1)"><</button>
-        <button id="lb-next" class="lb-btn" onclick="changeImg(1)">></button>
-        <img id="lb-img" src="" alt="Bild" />
-        <div id="lb-caption"></div>
-    </div>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miniatyrer - Bord</title>
+    <link rel="stylesheet" href="style.css?v=164424" />
+</head>
+<body class="theme-lostrom">
     
-            <script src="app.js?v=160814"></script>
-            <script>const currentGallery = [{'src': 'Loströms_miniatyrer/Bord/140724-1.jpg', 'title': '140724-1'}, {'src': 'Loströms_miniatyrer/Bord/140724-2.jpg', 'title': '140724-2'}, {'src': 'Loströms_miniatyrer/Bord/140724-5.jpg', 'title': '140724-5'}, {'src': 'Loströms_miniatyrer/Bord/140724-7.jpg', 'title': '140724-7'}];</script>
-        </body>
-        </html>
+    <header class="top-shell">
+        <p class="top-shell-intro">Miniatyrer och Antiart. Välj konstnär för att utforska deras verk.</p>
+        <div class="top-left">
+            <nav class="top-nav" aria-label="Huvudnavigation">
+                <a class="btn" href="index.html">Hem</a>
+                <a class="btn accent" href="val_suss.html">Miniatyrer</a>
+                <a class="btn " href="val_anti.html">Antiart</a>
+            </nav>
+            <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="Växla ljust och mörkt tema" onclick="toggleTheme()">
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+                <span class="switch-label">Tema</span>
+            </button>
+            <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
+        </div>
+        <a class="top-logo" href="index.html">
+            <img src="logo_main.png" alt="The Art Vault" decoding="async" />
+        </a>
+        <div class="top-art-panel" aria-hidden="true">
+            <img src="background.jpg" alt="" decoding="async" />
+        </div>
+    </header>
+    
+    
+    <div id="drawer" class="drawer">
+        <h3>Miniatyrer arkiv</h3>
+        <div class="drawer-links"><a class="active" href="miniatyrer_bord.html">Bord</a><a class="" href="miniatyrer_dioraman.html">Dioraman</a><a class="" href="utställning_wadköping_samling.html">Samling</a></div>
+        <div class="drawer-links" style="margin-top:10px;">
+            <a href="index.html">Hem</a>
+            <a href="val_suss.html">Miniatyrer nav</a>
+            <a href="val_anti.html">Antiart nav</a>
+        </div>
+    </div>
+    <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
+    
+    <main class="page">
         
+    <aside class="desktop-sidebar">
+        <h3>Miniatyrer arkiv</h3>
+        <div class="drawer-links"><a class="active" href="miniatyrer_bord.html">Bord</a><a class="" href="miniatyrer_dioraman.html">Dioraman</a><a class="" href="utställning_wadköping_samling.html">Samling</a></div>
+        <div class="drawer-links" style="margin-top:10px;">
+            <a href="index.html">Hem</a>
+        </div>
+    </aside>
+    
+        <section class="content">
+            <section class="hero">
+                <h1>Miniatyrer / Bord</h1>
+                <p>Du är i den här sektionen. Byt galleri via artistmenyn eller gå tillbaka till Hem.</p>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Hem</a>
+                    <span class="sep">/</span>
+                    <a href="val_suss.html">Miniatyrer</a>
+                    <span class="sep">/</span>
+                    <span class="current">Bord</span>
+                </nav>
+                <div class="artist-nav"><a class="artist-link active" href="miniatyrer_bord.html">Bord</a><a class="artist-link " href="miniatyrer_dioraman.html">Dioraman</a><a class="artist-link " href="utställning_wadköping_samling.html">Samling</a></div>
+            </section>
+            <section class="gallery-grid"><article class="card gallery-card" onclick="openLightbox('Loströms_miniatyrer/Bord/140724-1.jpg', '140724-1', currentGallery)"><img src="Loströms_miniatyrer/Bord/140724-1.jpg" alt="140724-1" loading="lazy" decoding="async" /><div class="gallery-title">140724-1</div></article><article class="card gallery-card" onclick="openLightbox('Loströms_miniatyrer/Bord/140724-2.jpg', '140724-2', currentGallery)"><img src="Loströms_miniatyrer/Bord/140724-2.jpg" alt="140724-2" loading="lazy" decoding="async" /><div class="gallery-title">140724-2</div></article><article class="card gallery-card" onclick="openLightbox('Loströms_miniatyrer/Bord/140724-5.jpg', '140724-5', currentGallery)"><img src="Loströms_miniatyrer/Bord/140724-5.jpg" alt="140724-5" loading="lazy" decoding="async" /><div class="gallery-title">140724-5</div></article><article class="card gallery-card" onclick="openLightbox('Loströms_miniatyrer/Bord/140724-7.jpg', '140724-7', currentGallery)"><img src="Loströms_miniatyrer/Bord/140724-7.jpg" alt="140724-7" loading="lazy" decoding="async" /><div class="gallery-title">140724-7</div></article></section>
+        </section>
+    </main>
+    
+    <nav class="bottom-nav">
+        <a class="" href="index.html">Hem</a>
+        <a class="active" href="val_suss.html">Artister</a>
+        <button type="button" onclick="toggleDrawer()">Meny</button>
+    </nav>
+    
+    
+<div id="lightbox">
+    <button id="lb-close" class="lb-btn" onclick="closeLightbox()">x</button>
+    <button id="lb-prev" class="lb-btn" onclick="changeImg(-1)"><</button>
+    <button id="lb-next" class="lb-btn" onclick="changeImg(1)">></button>
+    <img id="lb-img" src="" alt="Bild" />
+    <div id="lb-caption"></div>
+</div>
+
+    <script src="app.js?v=164424"></script>
+    <script>const currentGallery = [{'src': 'Loströms_miniatyrer/Bord/140724-1.jpg', 'title': '140724-1'}, {'src': 'Loströms_miniatyrer/Bord/140724-2.jpg', 'title': '140724-2'}, {'src': 'Loströms_miniatyrer/Bord/140724-5.jpg', 'title': '140724-5'}, {'src': 'Loströms_miniatyrer/Bord/140724-7.jpg', 'title': '140724-7'}];</script>
+</body>
+</html>
