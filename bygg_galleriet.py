@@ -501,6 +501,174 @@ img {
         word-break: break-word;
     }
 }
+
+/* ─── MD3 elevation tokens ─── */
+:root {
+    --md-elev-1: 0px 1px 2px rgba(0,0,0,.3), 0px 1px 3px 1px rgba(0,0,0,.15);
+    --md-elev-2: 0px 1px 2px rgba(0,0,0,.3), 0px 2px 6px 2px rgba(0,0,0,.15);
+    --md-elev-3: 0px 1px 3px rgba(0,0,0,.3), 0px 4px 8px 3px rgba(0,0,0,.15);
+}
+
+/* ─── Landing hero med background.jpg ─── */
+.landing-hero {
+    position: relative;
+    min-height: clamp(260px, 50vh, 520px);
+    background: url('background.jpg') center / cover no-repeat;
+    display: flex;
+    align-items: flex-end;
+}
+
+.landing-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(8, 10, 22, 0.88) 0%,
+        rgba(8, 10, 22, 0.45) 55%,
+        rgba(8, 10, 22, 0.18) 100%
+    );
+    pointer-events: none;
+}
+
+.landing-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: clamp(22px, 6vw, 56px) clamp(16px, 4vw, 56px);
+    color: white;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.landing-hero-label {
+    margin: 0 0 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.82;
+}
+
+.landing-hero-title {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    font-weight: 300;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+}
+
+.landing-hero-sub {
+    margin: 0;
+    max-width: 56ch;
+    font-size: clamp(0.98rem, 2.8vw, 1.12rem);
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* ─── Konstnärskort (MD3 elevated cards) ─── */
+.artist-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 0 14px 56px;
+}
+
+.artist-feature-card {
+    display: block;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    box-shadow: var(--md-elev-2);
+    transition: box-shadow 0.28s ease, transform 0.28s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.artist-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--md-elev-3);
+}
+
+.artist-feature-card.card-lostrom {
+    --accent: #4c6479;
+    --accent-soft: #e2e9f2;
+    background: linear-gradient(150deg, #f3f6fb, #eaf0f8);
+}
+
+.artist-feature-card.card-anti {
+    --accent: #7b4f43;
+    --accent-soft: #f1e3de;
+    background: linear-gradient(150deg, #f8f4f2, #f2ebea);
+}
+
+.artist-feature-card .portrait-wrap {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+}
+
+.artist-feature-card .portrait-wrap img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+
+.artist-feature-card:hover .portrait-wrap img {
+    transform: scale(1.05);
+}
+
+.artist-feature-card .card-body {
+    padding: 20px 22px 24px;
+}
+
+.artist-feature-card .card-label {
+    margin: 0 0 8px;
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.artist-feature-card h2 {
+    margin: 0 0 10px;
+    font-size: clamp(1.3rem, 4.5vw, 1.65rem);
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.artist-feature-card .desc {
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(0.9rem, 2.8vw, 1rem);
+    line-height: 1.6;
+}
+
+.md3-explore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    box-shadow: var(--md-elev-1);
+    transition: filter 0.2s ease;
+}
+
+.artist-feature-card:hover .md3-explore-btn {
+    filter: brightness(1.12);
+}
 """
 
 
@@ -714,29 +882,50 @@ def bygg():
             </div>
         </div>
         <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
-        <main class="page" style="display:block;">
-            <section class="hero">
-                <h1>Välkommen till The Art Portal</h1>
-                <p>Välj konstnär för att komma till rätt galleri. Varje sektion har eget tema och egen meny för snabb navigering.</p>
-                <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <span class="current">Hem</span>
-                </nav>
-            </section>
-            <section class="welcome-grid">
-                <a class="card portal-card" href="val_suss.html">
-                    <div class="logo-wrap"><img src="logo_suss.jpg" alt="Loströms miniatyrer" decoding="async" /></div>
+
+        <div class="landing-hero">
+            <div class="landing-hero-content">
+                <p class="landing-hero-label">Konstportal</p>
+                <h1 class="landing-hero-title">The Art Portal</h1>
+                <p class="landing-hero-sub">Välj konstnär för att utforska deras verk — två unika konstuttryck under ett tak.</p>
+            </div>
+        </div>
+
+        <div class="artist-showcase">
+            <a class="artist-feature-card card-lostrom" href="val_suss.html">
+                <div class="portrait-wrap">
+                    <img src="logo_suss.jpg" alt="Loströms miniatyrer" decoding="async" />
+                </div>
+                <div class="card-body">
+                    <p class="card-label">Miniatyrer &amp; Dioraman</p>
                     <h2>Loströms miniatyrer</h2>
-                    <p>Miniatyrbord, dioraman och utställningssamling.</p>
-                    <div class="chips"><span class="chip">Bord</span><span class="chip">Dioraman</span><span class="chip">Samling</span></div>
-                </a>
-                <a class="card portal-card" href="val_anti.html">
-                    <div class="logo-wrap"><img src="logo_antichrister.jpg" alt="Antiart" decoding="async" /></div>
+                    <p class="desc">Miniatyrbord, dioraman och utställningssamling. Detaljrikt hantverk i liten skala.</p>
+                    <div class="chips">
+                        <span class="chip">Bord</span>
+                        <span class="chip">Dioraman</span>
+                        <span class="chip">Samling</span>
+                    </div>
+                    <div class="md3-explore-btn">Utforska galleriet →</div>
+                </div>
+            </a>
+            <a class="artist-feature-card card-anti" href="val_anti.html">
+                <div class="portrait-wrap">
+                    <img src="logo_antichrister.jpg" alt="Antiart" decoding="async" />
+                </div>
+                <div class="card-body">
+                    <p class="card-label">Måleri &amp; Mixed Media</p>
                     <h2>Antiart</h2>
-                    <p>Tavlor i flera uttryck samt blandteknik och originalverk.</p>
-                    <div class="chips"><span class="chip">Diverse</span><span class="chip">Miniart</span><span class="chip">Mixed Media</span></div>
-                </a>
-            </section>
-        </main>
+                    <p class="desc">Tavlor i flera uttryck — diverse, miniart, mixed media och originalverk.</p>
+                    <div class="chips">
+                        <span class="chip">Diverse</span>
+                        <span class="chip">Miniart</span>
+                        <span class="chip">Mixed Media</span>
+                    </div>
+                    <div class="md3-explore-btn">Utforska galleriet →</div>
+                </div>
+            </a>
+        </div>
+
         {bottom_nav('home', 'val_suss.html')}
         <script src="app.js?v={ts}"></script>
     </body>

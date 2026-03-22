@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>The Art Portal</title>
-        <link rel="stylesheet" href="style.css?v=095355" />
+        <link rel="stylesheet" href="style.css?v=101011" />
     </head>
     <body class="theme-home">
         
@@ -31,29 +31,50 @@
             </div>
         </div>
         <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
-        <main class="page" style="display:block;">
-            <section class="hero">
-                <h1>Välkommen till The Art Portal</h1>
-                <p>Välj konstnär för att komma till rätt galleri. Varje sektion har eget tema och egen meny för snabb navigering.</p>
-                <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <span class="current">Hem</span>
-                </nav>
-            </section>
-            <section class="welcome-grid">
-                <a class="card portal-card" href="val_suss.html">
-                    <div class="logo-wrap"><img src="logo_suss.jpg" alt="Loströms miniatyrer" decoding="async" /></div>
+
+        <div class="landing-hero">
+            <div class="landing-hero-content">
+                <p class="landing-hero-label">Konstportal</p>
+                <h1 class="landing-hero-title">The Art Portal</h1>
+                <p class="landing-hero-sub">Välj konstnär för att utforska deras verk — två unika konstuttryck under ett tak.</p>
+            </div>
+        </div>
+
+        <div class="artist-showcase">
+            <a class="artist-feature-card card-lostrom" href="val_suss.html">
+                <div class="portrait-wrap">
+                    <img src="logo_suss.jpg" alt="Loströms miniatyrer" decoding="async" />
+                </div>
+                <div class="card-body">
+                    <p class="card-label">Miniatyrer &amp; Dioraman</p>
                     <h2>Loströms miniatyrer</h2>
-                    <p>Miniatyrbord, dioraman och utställningssamling.</p>
-                    <div class="chips"><span class="chip">Bord</span><span class="chip">Dioraman</span><span class="chip">Samling</span></div>
-                </a>
-                <a class="card portal-card" href="val_anti.html">
-                    <div class="logo-wrap"><img src="logo_antichrister.jpg" alt="Antiart" decoding="async" /></div>
+                    <p class="desc">Miniatyrbord, dioraman och utställningssamling. Detaljrikt hantverk i liten skala.</p>
+                    <div class="chips">
+                        <span class="chip">Bord</span>
+                        <span class="chip">Dioraman</span>
+                        <span class="chip">Samling</span>
+                    </div>
+                    <div class="md3-explore-btn">Utforska galleriet →</div>
+                </div>
+            </a>
+            <a class="artist-feature-card card-anti" href="val_anti.html">
+                <div class="portrait-wrap">
+                    <img src="logo_antichrister.jpg" alt="Antiart" decoding="async" />
+                </div>
+                <div class="card-body">
+                    <p class="card-label">Måleri &amp; Mixed Media</p>
                     <h2>Antiart</h2>
-                    <p>Tavlor i flera uttryck samt blandteknik och originalverk.</p>
-                    <div class="chips"><span class="chip">Diverse</span><span class="chip">Miniart</span><span class="chip">Mixed Media</span></div>
-                </a>
-            </section>
-        </main>
+                    <p class="desc">Tavlor i flera uttryck — diverse, miniart, mixed media och originalverk.</p>
+                    <div class="chips">
+                        <span class="chip">Diverse</span>
+                        <span class="chip">Miniart</span>
+                        <span class="chip">Mixed Media</span>
+                    </div>
+                    <div class="md3-explore-btn">Utforska galleriet →</div>
+                </div>
+            </a>
+        </div>
+
         
         <nav class="bottom-nav">
             <a class="active" href="index.html">Hem</a>
@@ -61,7 +82,7 @@
             <button type="button" onclick="toggleDrawer()">Meny</button>
         </nav>
         
-        <script src="app.js?v=095355"></script>
+        <script src="app.js?v=101011"></script>
     </body>
     </html>
     
