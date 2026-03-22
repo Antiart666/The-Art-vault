@@ -116,6 +116,17 @@ img {
     grid-template-columns: minmax(260px, 1fr) minmax(280px, 1.1fr) minmax(260px, 1fr);
     gap: clamp(12px, 2.4vw, 22px);
     align-items: center;
+    animation: heroRise 480ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.top-shell-intro {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+    color: var(--top-nav-text);
+    font-size: clamp(0.96rem, 1.8vw, 1.08rem);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
 }
 
 .top-left {
@@ -616,68 +627,6 @@ body[data-theme="dark"] .switch-thumb {
     --md-elev-3: 0px 1px 3px rgba(0,0,0,.3), 0px 4px 8px 3px rgba(0,0,0,.15);
 }
 
-/* ─── Landing hero med background.jpg ─── */
-.landing-hero {
-    position: relative;
-    min-height: clamp(180px, 32vh, 280px);
-    background: transparent;
-    display: block;
-    padding: 12px 14px 0;
-}
-
-.landing-hero::before {
-    content: none;
-}
-
-.landing-hero-content {
-    position: relative;
-    z-index: 1;
-    padding: clamp(20px, 4.5vw, 34px) clamp(16px, 4vw, 52px);
-    color: var(--text);
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.landing-hero-surface {
-    border-radius: clamp(20px, 4vw, 32px);
-    border: 1px solid var(--line);
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.44));
-    box-shadow: var(--md-elev-1);
-    text-align: center;
-    animation: heroRise 500ms cubic-bezier(0.2, 0, 0, 1);
-}
-
-body[data-theme="dark"] .landing-hero-surface {
-    background: linear-gradient(145deg, rgba(20, 28, 42, 0.86), rgba(20, 28, 42, 0.72));
-}
-
-.landing-hero-label {
-    margin: 0 0 8px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.82;
-}
-
-.landing-hero-title {
-    margin: 0 0 12px;
-    font-size: clamp(2rem, 6vw, 3.4rem);
-    font-weight: 300;
-    line-height: 1.18;
-    letter-spacing: -0.01em;
-}
-
-.landing-hero-sub {
-    margin: 0;
-    max-width: 62ch;
-    font-size: clamp(0.98rem, 2.8vw, 1.12rem);
-    line-height: 1.6;
-    opacity: 0.9;
-    margin-inline: auto;
-}
-
 .artist-hub-wrap {
     display: grid;
     margin-top: 16px;
@@ -760,7 +709,7 @@ body[data-theme="dark"] .landing-hero-surface {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     max-width: 1200px;
-    margin: 24px auto;
+    margin: 12px auto;
     padding: 0 14px 56px;
 }
 
@@ -901,7 +850,7 @@ body[data-theme="dark"] .landing-hero-surface {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .landing-hero-surface,
+    .top-shell,
     .artist-feature-card {
         animation: none;
     }
@@ -931,17 +880,8 @@ body[data-theme="dark"] .landing-hero-surface {
         justify-content: center;
     }
 
-    .landing-hero {
-        min-height: auto;
-        padding-top: 10px;
-    }
-
-    .landing-hero-content {
-        padding: clamp(16px, 4vw, 24px) clamp(14px, 4vw, 24px);
-    }
-
-    .landing-hero-sub {
-        max-width: 44ch;
+    .top-shell-intro {
+        max-width: 48ch;
     }
 }
 
@@ -964,9 +904,8 @@ body[data-theme="dark"] .landing-hero-surface {
         justify-content: center;
     }
 
-    .landing-hero-sub {
-        font-size: clamp(0.9rem, 4.1vw, 1rem);
-        line-height: 1.5;
+    .top-shell-intro {
+        font-size: 0.92rem;
     }
 }
 """
@@ -1132,6 +1071,7 @@ def bygg():
         lostrom_active = "accent" if active_artist == "lostrom" else ""
         return f"""
         <header class="top-shell">
+            <p class="top-shell-intro">Miniatyrer och Antiart. Välj konstnär för att utforska deras verk.</p>
             <div class="top-left">
                 <nav class="top-nav" aria-label="Huvudnavigation">
                     <a class="btn" href="index.html">Hem</a>
@@ -1219,14 +1159,6 @@ def bygg():
             </div>
         </div>
         <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
-
-        <div class="landing-hero">
-            <div class="landing-hero-content landing-hero-surface">
-                <p class="landing-hero-label">Konstportal</p>
-                <h1 class="landing-hero-title">Miniatyrer &amp; Antiart</h1>
-                <p class="landing-hero-sub">Välj konstnär för att utforska deras verk — två unika konstuttryck under ett tak.</p>
-            </div>
-        </div>
 
         <div class="artist-showcase">
             <a class="artist-feature-card card-lostrom" href="val_suss.html">
