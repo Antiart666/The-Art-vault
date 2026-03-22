@@ -1,0 +1,194 @@
+MAPPANALYS FÖR: C:\Users\chris\OneDrive\Bilder - Tavlor, miniatyrer, Wadköping\The_Art_Vault
+
+==================================================
+
+FILER I HUVUDMAPPEN:
+  [FIL] antiart_tavlor_diverse.html (3816 bytes)
+  [FIL] antiart_tavlor_miniart.html (3116 bytes)
+  [FIL] antiart_tavlor_mixed_media.html (5026 bytes)
+  [FIL] antiart_tavlor_original.html (1827 bytes)
+  [FIL] background.jpg (5424738 bytes)
+  [FIL] bygg_galleriet.py (4593 bytes)
+  [FIL] index.html (517 bytes)
+  [FIL] index.html - genväg.lnk (1633 bytes)
+  [FIL] koll.py (1730 bytes)
+  [FIL] logo_antichrister.jpg (1768776 bytes)
+  [FIL] logo_suss.jpg (11836166 bytes)
+  [FIL] style.css (1472 bytes)
+  [FIL] suss_miniatyrer_bord.html (817 bytes)
+  [FIL] suss_miniatyrer_dioraman.html (1218 bytes)
+  [FIL] suss_miniatyrer_diverse.html (3818 bytes)
+  [FIL] utställning_wadköping_samling.html (11245 bytes)
+
+MAPPAR OCH UNDERMAPPAR:
+
+[MAPP] Antiart_tavlor
+    [SUB] Diverse
+    [SUB] Miniart
+      A helping hand (2).jpg
+      a helping hand 2.jpg
+      A helping hand 3.jpg
+      a helping hand.jpg
+      A study in black and white.jpg
+      Another mighty foot!.jpg
+      Back at Bareback mountain.jpg
+      Bad reception at the Bikini Atoll.jpg
+      Best friends!.jpg
+      Dagspromenad på sjön.jpg
+      dead man (1).jpg
+      Delayed by the mountains.jpg
+      Golden sunset.jpg
+      Hej då kompis!.jpg
+      hej då kompis.jpg
+      Is it a bird....jpg
+      Jazzhands at dawn.jpg
+      Lugnets träd.jpg
+      MUHAHAHA!.jpg
+      Nature 2.jpg
+      Nej! Topsen, örats värsta fiende.jpg
+      No stinky feet.jpg
+      Ren natur och rena fötter.jpg
+      Sad clown.jpg
+      Skogsväsen.jpg
+      small abstract.jpg
+      Staring kontest.jpg
+      The queen.jpg
+      Troble in paradise.jpg
+      Våren är här!.jpg
+      walking on sunshine.jpg
+      When genres collide!.jpg
+    [SUB] Mixed_Media
+      10 minutes to sundown... the girls are ready!.jpg
+      A bent man empowers a gigant leap for a woman!.jpg
+      A day at the beach.jpg
+      A ride in the sky2.jpg
+      A view to a kill.jpg
+      A yuletide icebath.jpg
+      As long as we are entertained we don´t care about anyone else.png
+      Bat at night.jpg
+      Clash at the lighthouse.jpg
+      Dawn at the lake.jpg
+      Det finns inga dåliga kläder, bara dåliga väder.jpg
+      Falling at the beach.jpg
+      Gigants playing in nature.jpg
+      Goatzilla.jpg
+      Göingeflickorna goes nuclear!.jpg
+      I love Hjo!.jpg
+      Kärlek över Stjärnstigen 5, Laxå!.jpg
+      Light after death 1.jpg
+      Light after death 2.jpg
+      Lila solnedgång.jpg
+      Love at the lake.jpg
+      Making the clouds.jpg
+      Monster in autum.jpg
+      Morfar Ture och jag på Ålandsvägen 86 i Laxå.jpg
+      Pew pew!.jpg
+      Placing that ball.jpg
+      Pocketing the sunball.jpg
+      Reading at Draculas castle.jpg
+      Rom 3 - Flygning över Pantheon.jpg
+      Rom 4 - Vila vid Forum Romanum.jpg
+      Rome 1 - Paraplytallar vid circus maximus.jpg
+      Rome 2 - Via Guliana.jpg
+      Skip the sunrise.jpg
+      Slaget vid Hönö.jpg
+      Small details on the fourth day.jpg
+      Snow robot.jpg
+      Snowalien.jpg
+      Sorry to disturbe yor art!.jpg
+      Stomping terror!.jpg
+      STOPP! Min kropp...jpg
+      Sänka skepp.jpg
+      the icequeeen is a poser.jpg
+      The mighty foot of the Lord!.jpg
+      There goes the neighbourhood.jpg
+      Titta där!.jpg
+      Washday of the gods (1).jpg
+      Weeeeee!.jpg
+      What happens in the wood stays in the woods!.jpg
+      When none hears the the tree falls in hte forset, they emerge! Ver 2.jpg
+    [SUB] Original
+      Abstact hell #1.jpg
+      Abstact hell #2.jpg
+      Abstact hell #3.jpg
+      Abstact hell #4.jpg
+      Abstact hell - The Throne.jpg
+      Abstact hell Firestorm.jpg
+      Into the woods.jpg
+      Light after death 1.jpg
+      Light after death 2.jpg
+      Lila solnedgång.jpg
+      Nosferatu.jpg
+      Pazuzu.jpg
+      Soldier of misfortune.jpg
+      Svensk solnedgång.jpg
+      Village.jpg
+      Walpurgis night.jpg
+
+[MAPP] Suss_Miniatyrer
+    [SUB] Bord
+      140724-1.jpg
+      140724-2.jpg
+      140724-5.jpg
+      140724-7.jpg
+    [SUB] Dioraman
+      140724-10.jpg
+      140724-15.jpg
+      140724-16.jpg
+      140724-32.jpg
+      140724-34.jpg
+      140724-36.jpg
+      140724-9.jpg
+      20230306_210434.jpg
+      20251008_190909.jpg
+    [SUB] Diverse
+
+[MAPP] Utställning_Wadköping
+    20251008_184458.jpg
+    20251008_190909.jpg
+    20251009_185514.jpg
+    20251128_103409.jpg
+    20251128_130703.jpg
+    20251128_130709.jpg
+    20251128_130711.jpg
+    20251128_131628.jpg
+    20251128_154516.jpg
+    20251128_180010.jpg
+    20251128_180017.jpg
+    20251128_180025.jpg
+    20251128_180027.jpg
+    20251128_180035.jpg
+    20251128_180916.jpg
+    20251128_180923.jpg
+    20251128_180930.jpg
+    20251128_180940.jpg
+    20251128_180944.jpg
+    20251128_180951.jpg
+    20251128_180959.jpg
+    20251128_181009.jpg
+    20251128_181016.jpg
+    20251128_181021.jpg
+    20251128_181042.jpg
+    20251128_181052.jpg
+    20251128_181055.jpg
+    20251130_104258.jpg
+    20251130_104306.jpg
+    20251130_104314.jpg
+    20251130_104322.jpg
+    20251130_104330.jpg
+    20251130_104335.jpg
+    20251130_104340.jpg
+    20251130_104343.jpg
+    20251130_104348.jpg
+    20251130_104359.jpg
+    20251130_104405.jpg
+    20251130_104411.jpg
+    20251130_104418.jpg
+    20251130_104432.jpg
+    20251130_104437.jpg
+    20251203_110755.jpg
+    20251203_110803.jpg
+    20251203_110813.jpg
+    20251203_191522.jpg
+    Affisch Wadköping v 2.png
+    Messenger_creation_E779B3B0-10C7-4B22-A0C3-052B9A994928.jpeg
