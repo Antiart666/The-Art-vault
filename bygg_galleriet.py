@@ -1,212 +1,874 @@
 import os
-import random
 from datetime import datetime
 
 # 1. MILJÖINSTÄLLNINGAR
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(BASE_DIR)
 
-# 2. CSS - ALL STYLING
+# 2. CSS - PORTALSTYLING
 CSS_KOD = """
-body { margin: 0; padding: 0; background: #0d1117 url('background.jpg') no-repeat center center fixed; background-size: cover; color: white; font-family: sans-serif; }
-body::after { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: -1; }
+:root {
+    --bg: #f1f4f9;
+    --surface: #f8fbff;
+    --surface-2: #ffffff;
+    --text: #1f2430;
+    --muted: #5e6678;
+    --line: #d2d9e8;
+    --shadow: 0 12px 30px rgba(31, 36, 48, 0.12);
+    --radius-xl: 28px;
+    --radius-md: 18px;
+}
 
-/* LOGGA HÖGST UPP TILL VÄNSTER - 828px */
-.main-logo {
-    position: fixed;
-    top: 0px; 
-    left: 40px;
-    width: 828px; 
-    height: auto;
-    z-index: 6000;
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(57, 145, 255, 0.14), transparent 60%),
+        radial-gradient(900px 600px at 100% -20%, rgba(28, 183, 122, 0.14), transparent 65%),
+        var(--bg);
+    min-height: 100vh;
+    padding-bottom: 92px;
+}
+
+body.theme-anti {
+    --accent: #7b4f43;
+    --accent-soft: #f1e3de;
+    --artist-grad: linear-gradient(140deg, #5f6f8f, #6f82a6 56%, #8599bd);
+    --artist-card: linear-gradient(150deg, #f8f4f2, #f2ebea);
+}
+
+body.theme-lostrom {
+    --accent: #4c6479;
+    --accent-soft: #e2e9f2;
+    --artist-grad: linear-gradient(140deg, #5f728f, #7287a8 56%, #8a9fc0);
+    --artist-card: linear-gradient(150deg, #f3f6fb, #eaf0f8);
+}
+
+body.theme-home {
+    --accent: #4f378a;
+    --accent-soft: #e8def8;
+    --artist-grad: linear-gradient(140deg, #2e365f, #394f86 52%, #536cc0);
+    --artist-card: linear-gradient(150deg, #eef1ff, #e0e7ff);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.app-bar {
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(248, 251, 255, 0.88);
+    backdrop-filter: blur(10px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.brand img {
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+}
+
+.app-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn,
+.icon-btn {
+    border: 0;
     cursor: pointer;
-    transition: 0.3s;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    font: inherit;
 }
-.main-logo:hover { transform: scale(1.01); filter: brightness(1.1); }
 
-.nav-bar { height: 110px; background: transparent; position: fixed; top: 0; width: 100%; z-index: 1000; }
+.btn:hover,
+.icon-btn:hover { transform: translateY(-1px); }
 
-.logo-portal { 
-    width: 288px; height: auto; cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    filter: contrast(110%) brightness(90%) sepia(20%) drop-shadow(0 20px 40px rgba(0,0,0,1)); 
-    z-index: 5000;
+.btn {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 14px;
+    font-size: 0.9rem;
 }
-.l-suss { transform: rotate(-3deg); } .l-anti { transform: rotate(5deg); }
-.logo-portal:hover { transform: scale(1.05) rotate(0deg); filter: brightness(1.2); }
 
-/* SIDOMENY - 120px FRÅN TOPPEN */
-.sidebar-nav {
-    position: fixed; 
-    top: 120px; 
-    left: 40px; 
-    width: 210px;
-    display: flex; 
-    flex-direction: column; 
-    gap: 10px; 
-    z-index: 5000;
+.btn.accent {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: transparent;
+    font-weight: 700;
 }
-.sidebar-logo { width: 100%; height: auto; cursor: pointer; margin-bottom: 15px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8)); }
 
-.side-btn {
-    padding: 10px 15px; 
-    background: rgba(255,255,255,0.05); 
-    border: 1px solid rgba(255,255,255,0.3); 
-    color: #e6edf3; 
-    text-decoration: none; 
-    text-transform: lowercase; 
-    letter-spacing: 1px;
-    font-size: 0.75rem; 
-    transition: 0.3s; 
-    border-radius: 4px; 
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.page {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 20px 14px 40px;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background: var(--artist-grad);
+    color: white;
+    box-shadow: var(--shadow);
+    padding: clamp(18px, 4vw, 34px);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -90px -90px auto;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(1.45rem, 4vw, 2.2rem);
+}
+
+.hero p {
+    margin: 10px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 70ch;
+    font-size: clamp(0.96rem, 2.5vw, 1.05rem);
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 14px 0 0;
+    font-size: 0.86rem;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.breadcrumb a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.45);
+    text-underline-offset: 2px;
+}
+
+.breadcrumb .sep {
+    opacity: 0.7;
+}
+
+.breadcrumb .current {
+    font-weight: 700;
+}
+
+.welcome-grid,
+.artist-grid,
+.gallery-grid {
+    display: grid;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.welcome-grid,
+.artist-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    box-shadow: 0 8px 22px rgba(31, 36, 48, 0.08);
+}
+
+.portal-card {
+    padding: 18px;
+    background: var(--artist-card);
+}
+
+.portal-card .logo-wrap {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+.portal-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.portal-card h2 {
+    margin: 12px 0 6px;
+    font-size: clamp(1.08rem, 3.8vw, 1.25rem);
+}
+
+.portal-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(0.9rem, 2.8vw, 1rem);
+}
+
+.chips {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    border-radius: 999px;
+    padding: 7px 11px;
+    font-size: 0.82rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.artist-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.artist-link {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+}
+
+.artist-link.active {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: transparent;
+    font-weight: 700;
+}
+
+.gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+}
+
+.gallery-card {
+    overflow: hidden;
+    cursor: pointer;
+    content-visibility: auto;
+    contain-intrinsic-size: 220px;
+}
+
+.gallery-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.gallery-title {
+    padding: 9px 8px 11px;
+    text-align: center;
+    font-size: clamp(0.74rem, 2.7vw, 0.82rem);
+    color: var(--muted);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.content,
+.portal-card,
+.hero {
+    min-width: 0;
+}
+
+.drawer {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(82vw, 330px);
+    background: var(--surface-2);
+    transform: translateX(-104%);
+    transition: transform 0.25s ease;
+    z-index: 3000;
+    border-right: 1px solid var(--line);
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.drawer.open { transform: translateX(0); }
+
+.drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 12, 20, 0.35);
+    z-index: 2990;
+    display: none;
+}
+
+.drawer-backdrop.open { display: block; }
+
+.drawer h3 {
+    margin: 4px 0 10px;
+    font-size: 1rem;
+}
+
+.drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.drawer-links a {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+}
+
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2100;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 12px max(10px, env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: rgba(248, 251, 255, 0.96);
+    backdrop-filter: blur(10px);
+}
+
+.bottom-nav a,
+.bottom-nav button {
+    min-width: 78px;
+    padding: 8px 10px;
+    border-radius: 14px;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    color: var(--muted);
+}
+
+.bottom-nav .active {
+    color: var(--accent);
+    background: var(--accent-soft);
+    font-weight: 700;
+}
+
+#lightbox {
+    display: none;
+    position: fixed;
+    z-index: 4000;
+    inset: 0;
+    background: rgba(10, 10, 14, 0.96);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 18px;
+}
+
+#lightbox img {
+    max-width: min(96vw, 1200px);
+    max-height: 78vh;
+    border-radius: 14px;
+}
+
+#lb-caption {
+    margin-top: 14px;
+    color: #f1f4f9;
+    letter-spacing: 0.2px;
     text-align: center;
 }
-.side-btn:hover { 
-    background: rgba(88, 166, 255, 0.15); 
-    border-color: #58a6ff; 
-    color: white; 
-    transform: translateX(5px); 
+
+.lb-btn {
+    position: absolute;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    background: rgba(255, 255, 255, 0.12);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
 }
-.side-btn.active { 
-    border-color: #58a6ff; 
-    color: white; 
-    background: rgba(88, 166, 255, 0.1); 
+
+#lb-close { top: 16px; right: 14px; }
+#lb-prev { left: 14px; top: 50%; transform: translateY(-50%); }
+#lb-next { right: 14px; top: 50%; transform: translateY(-50%); }
+
+@media (min-width: 980px) {
+    body { padding-bottom: 0; }
+
+    .page {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 16px;
+        align-items: start;
+    }
+
+    .desktop-sidebar {
+        position: sticky;
+        top: 76px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--line);
+        background: var(--surface-2);
+        padding: 14px;
+        box-shadow: 0 8px 22px rgba(31, 36, 48, 0.08);
+    }
+
+    .desktop-sidebar .drawer-links a.active {
+        background: var(--accent-soft);
+        color: var(--accent);
+        border-color: transparent;
+        font-weight: 700;
+    }
+
+    .content {
+        min-width: 0;
+    }
+
+    .bottom-nav { display: none; }
+    .icon-btn.only-mobile { display: none; }
 }
 
-/* HEMSKÄRMEN - NU FLYTTAD UPP ORDENTLIGT */
-.welcome-container { 
-    display: flex; 
-    align-items: center; 
-    height: 100vh; 
-    padding-left: 8%; 
-    padding-top: 40px; /* Ändrat från 150px för att flytta upp bilderna */
+@media (max-width: 520px) {
+    .app-bar {
+        padding: 9px 10px;
+        gap: 6px;
+    }
+
+    .brand span {
+        font-size: 0.9rem;
+    }
+
+    .app-actions {
+        gap: 6px;
+    }
+
+    .btn {
+        padding: 7px 10px;
+        font-size: 0.8rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-title {
+        white-space: normal;
+        text-overflow: unset;
+        overflow: visible;
+        line-height: 1.25;
+        word-break: break-word;
+    }
 }
-.welcome-center { display: flex; gap: 60px; }
-
-.category-choice { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; gap: 40px; }
-.btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; max-width: 800px; }
-.cat-btn { padding: 14px 28px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.3); color: white; text-decoration: none; text-transform: lowercase; letter-spacing: 2px; transition: 0.3s; border-radius: 4px; font-size: 0.85rem; }
-.cat-btn:hover { background: rgba(88, 166, 255, 0.2); border-color: #58a6ff; transform: translateY(-5px); }
-
-.container { max-width: 1500px; margin: 0 auto; height: 100%; display: flex; justify-content: flex-end; align-items: center; padding: 0 40px; }
-.nav-links { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; align-items: center; }
-.dropbtn { color: #e6edf3; text-decoration: none; text-transform: lowercase; letter-spacing: 2px; font-size: 0.75rem; transition: 0.3s; white-space: nowrap; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
-.dropbtn:hover { color: #58a6ff; }
-
-.red-btn-container { display: flex; flex-direction: column; align-items: center; gap: 5px; margin-left: 15px; }
-.red-btn { width: 25px; height: 25px; background-color: #f85149; border-radius: 50%; border: 2px solid #b62324; cursor: pointer; transition: 0.3s; box-shadow: 0 0 10px rgba(248, 81, 73, 0.5); }
-.red-btn:hover { background-color: #ff6e67; transform: scale(1.2); box-shadow: 0 0 20px rgba(248, 81, 73, 0.8); }
-.red-btn-text { color: #f85149; font-size: 0.6rem; text-transform: lowercase; letter-spacing: 1px; opacity: 0.8; text-shadow: 1px 1px 2px black; }
-
-.gallery-space { max-width: 1400px; margin: 180px auto 100px auto; padding: 0 60px 0 320px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 60px 40px; }
-.card { background: rgba(255, 255, 255, 0.02); padding: 12px; border: 1px solid rgba(255, 255, 255, 0.06); cursor: pointer; transition: 0.4s; }
-.card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.05); }
-.card img { width: 100%; display: block; }
-.img-title { margin-top: 10px; text-align: center; font-size: 0.75rem; color: #8b949e; text-transform: lowercase; }
-
-#lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); flex-direction: column; align-items: center; justify-content: center; }
-#lightbox img { max-width: 90%; max-height: 80%; border: 1px solid rgba(255,255,255,0.1); }
-#lb-caption { margin-top: 20px; font-size: 1.2rem; color: #58a6ff; letter-spacing: 2px; text-transform: lowercase; }
-.lb-btn { position: absolute; color: white; font-size: 50px; cursor: pointer; user-select: none; padding: 20px; transition: 0.2s; }
-.lb-btn:hover { color: #58a6ff; }
-#lb-close { top: 20px; right: 30px; } #lb-prev { left: 30px; } #lb-next { right: 30px; }
 """
 
-with open("style.css", "w", encoding="utf-8") as f: f.write(CSS_KOD)
 
-# 3. BYGGMOTORN
+def slug_folder(folder_name):
+    return folder_name.lower().replace(" ", "_")
+
+
+def slug_page(folder_name, cat_name):
+    return f"{slug_folder(folder_name)}_{cat_name.lower().replace(' ', '_')}.html"
+
+
+def display_category(cat_name):
+    return cat_name.replace("_", " ")
+
+
+def sort_text(value):
+    return value.casefold()
+
+
 TARGETS = ["Antiart_tavlor", "Loströms_miniatyrer", "Utställning_Wadköping"]
 
+
+# 3. BYGGMOTOR
 def bygg():
-    print("🚀 Bygger Galleriet: Lyfter portalbilderna på hemskärmen...")
+    print("Bygger portal med tydlig artiststruktur...")
     ts = datetime.now().strftime("%H%M%S")
     data = {}
-    all_imgs = [] 
-    EXT = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.JPG', '.JPEG', '.PNG', '.WEBP')
+    ext = (".jpg", ".jpeg", ".png", ".webp", ".bmp", ".JPG", ".JPEG", ".PNG", ".WEBP")
 
-    for t in TARGETS:
-        if not os.path.exists(t): continue
-        data[t] = {}
-        for root, dirs, files in os.walk(t):
+    for target in TARGETS:
+        if not os.path.exists(target):
+            continue
+        data[target] = {}
+        for root, dirs, files in os.walk(target):
+            dirs.sort(key=sort_text)
+            files = sorted(files, key=sort_text)
             cat_name = os.path.basename(root)
-            if cat_name == t: cat_name = "Samling"
-            found = [{"src": os.path.join(root, f).replace("\\", "/"), "title": os.path.splitext(f)[0]} for f in files if f.endswith(EXT)]
+            if cat_name == target:
+                cat_name = "Samling"
+            found = [
+                {"src": os.path.join(root, f).replace("\\", "/"), "title": os.path.splitext(f)[0]}
+                for f in files
+                if f.endswith(ext)
+            ]
             if found:
-                data[t][cat_name] = found
-                all_imgs.extend(found)
+                found.sort(key=lambda img: sort_text(img["title"]))
+                data[target][cat_name] = found
 
-    js_all = f"const allImages = {all_imgs};"
-    common_js = js_all + """
-    let currentIdx = 0; let images = [];
+    with open("style.css", "w", encoding="utf-8") as css_file:
+        css_file.write(CSS_KOD)
+
+    anti_categories = []
+    lostrom_categories = []
+
+    for folder, categories in data.items():
+        for cat_name in sorted(categories.keys(), key=lambda name: sort_text(display_category(name))):
+            item = {
+                "folder": folder,
+                "cat": cat_name,
+                "url": slug_page(folder, cat_name),
+            }
+            if "Antiart" in folder:
+                anti_categories.append(item)
+            else:
+                lostrom_categories.append(item)
+
+    anti_categories.sort(key=lambda item: sort_text(display_category(item["cat"])))
+    lostrom_categories.sort(key=lambda item: sort_text(display_category(item["cat"])))
+
+    js_common = """
+    let currentIdx = 0;
+    let images = [];
+
     function openLightbox(src, title, galleryArray) {
-        images = galleryArray; const lb = document.getElementById('lightbox');
-        const lbImg = document.getElementById('lb-img'); const lbCap = document.getElementById('lb-caption');
-        currentIdx = images.findIndex(img => img.src === src);
-        lbImg.src = src; lbCap.innerText = title; lb.style.display = 'flex';
+        images = galleryArray;
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lb-img');
+        const lbCap = document.getElementById('lb-caption');
+        currentIdx = images.findIndex((img) => img.src === src);
+        lbImg.src = src;
+        lbCap.innerText = title;
+        lb.style.display = 'flex';
     }
-    function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+
     function changeImg(dir) {
-        currentIdx += dir; if (currentIdx < 0) currentIdx = images.length - 1;
+        if (images.length === 0) return;
+        currentIdx += dir;
+        if (currentIdx < 0) currentIdx = images.length - 1;
         if (currentIdx >= images.length) currentIdx = 0;
         document.getElementById('lb-img').src = images[currentIdx].src;
         document.getElementById('lb-caption').innerText = images[currentIdx].title;
     }
-    function showRandomImage() {
-        if (allImages.length === 0) return;
-        const rnd = allImages[Math.floor(Math.random() * allImages.length)];
-        openLightbox(rnd.src, rnd.title, allImages);
+
+    function toggleDrawer(force) {
+        const drawer = document.getElementById('drawer');
+        const backdrop = document.getElementById('drawer-backdrop');
+        if (!drawer || !backdrop) return;
+        const openState = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
+        drawer.classList.toggle('open', openState);
+        backdrop.classList.toggle('open', openState);
     }
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') changeImg(1); if (e.key === 'ArrowLeft') changeImg(-1);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+            toggleDrawer(false);
+        }
+        if (e.key === 'ArrowRight') changeImg(1);
+        if (e.key === 'ArrowLeft') changeImg(-1);
     });
     """
-    lb_h = """<div id="lightbox"><span id="lb-close" class="lb-btn" onclick="closeLightbox()">&times;</span><span id="lb-prev" class="lb-btn" onclick="changeImg(-1)">&#10094;</span><span id="lb-next" class="lb-btn" onclick="changeImg(1)">&#10095;</span><img id="lb-img" src=""><div id="lb-caption"></div></div>"""
-    red_b = '<li class="red-btn-container"><div class="red-btn" onclick="showRandomImage()"></div><span class="red-btn-text">klicka ej!</span></li>'
-    main_logo_html = '<img src="logo_main.png" class="main-logo" onclick="location.href=\'index.html\'">'
 
-    all_links_for_index = []
-    for art_type in ["anti", "suss"]:
-        for t_folder, categories in data.items():
-            is_anti_folder = "Antiart" in t_folder
-            if (art_type == "anti" and is_anti_folder) or (art_type == "suss" and not is_anti_folder):
-                for cat_name in categories:
-                    url = (t_folder + "_" + cat_name).lower().replace(" ", "_") + ".html"
-                    all_links_for_index.append(f'<li><a href="{url}" class="dropbtn">{cat_name.lower()}</a></li>')
+    with open("app.js", "w", encoding="utf-8") as js_file:
+        js_file.write(js_common)
 
-    idx_links = "".join(all_links_for_index)
-    idx_html = f"<!DOCTYPE html><html><head><meta charset='UTF-8'><link rel='stylesheet' href='style.css?v={ts}'></head><body>{main_logo_html}<nav class='nav-bar'><div class='container'><ul class='nav-links'><li><a href='index.html' class='dropbtn'>hem</a></li>{idx_links}{red_b}</ul></div></nav><div class='welcome-container'><div class='welcome-center'><img src='logo_suss.jpg' class='logo-portal l-suss' onclick='location.href=\"val_suss.html\"'><img src='logo_antichrister.jpg' class='logo-portal l-anti' onclick='location.href=\"val_anti.html\"'></div></div>{lb_h}<script>{common_js}</script></body></html>"
-    with open("index.html", "w", encoding="utf-8") as f: f.write(idx_html)
+    lightbox_html = """
+    <div id="lightbox">
+        <button id="lb-close" class="lb-btn" onclick="closeLightbox()">x</button>
+        <button id="lb-prev" class="lb-btn" onclick="changeImg(-1)"><</button>
+        <button id="lb-next" class="lb-btn" onclick="changeImg(1)">></button>
+        <img id="lb-img" src="" alt="Bild" />
+        <div id="lb-caption"></div>
+    </div>
+    """
 
-    for art_type in ["anti", "suss"]:
-        logga = "logo_antichrister.jpg" if art_type == "anti" else "logo_suss.jpg"
-        mina_kategorier = []
-        for t_folder, categories in data.items():
-            is_anti_folder = "Antiart" in t_folder
-            if (art_type == "anti" and is_anti_folder) or (art_type == "suss" and not is_anti_folder):
-                for cat_name in categories:
-                    url = (t_folder + "_" + cat_name).lower().replace(" ", "_") + ".html"
-                    mina_kategorier.append({"name": cat_name, "url": url, "parent": t_folder})
+    def app_bar(active_artist):
+        anti_active = "accent" if active_artist == "anti" else ""
+        lostrom_active = "accent" if active_artist == "lostrom" else ""
+        return f"""
+        <header class="app-bar">
+            <a class="brand" href="index.html">
+                <img src="logo_main.png" alt="Portal" />
+                <span>The Art Portal</span>
+            </a>
+            <div class="app-actions">
+                <a class="btn" href="index.html">Hem</a>
+                <a class="btn {lostrom_active}" href="val_suss.html">Loströms</a>
+                <a class="btn {anti_active}" href="val_anti.html">Antiart</a>
+                <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
+            </div>
+        </header>
+        """
 
-        btns_html = "".join([f'<a href="{item["url"]}" class="cat-btn">{item["name"].lower()}</a>' for item in mina_kategorier])
-        val_page = f"<!DOCTYPE html><html><head><meta charset='UTF-8'><link rel='stylesheet' href='style.css?v={ts}'></head><body>{main_logo_html}<nav class='nav-bar'><div class='container'><ul class='nav-links'><li><a href='index.html' class='dropbtn'>hem</a></li>{red_b}</ul></div></nav><div class='category-choice'><img src='{logga}' class='logo-portal'><div class='btn-group'>{btns_html}</div><a href='index.html' class='cat-btn' style='margin-top:20px; opacity:0.6;'>tillbaka</a></div>{lb_h}<script>{common_js}</script></body></html>"
-        with open(f"val_{art_type}.html", "w", encoding="utf-8") as f: f.write(val_page)
+    def artist_sidebar(items, current_url, title):
+        links = "".join(
+            [
+                f'<a class="{"active" if item["url"] == current_url else ""}" href="{item["url"]}">{display_category(item["cat"])}</a>'
+                for item in items
+            ]
+        )
+        return f"""
+        <aside class="desktop-sidebar">
+            <h3>{title}</h3>
+            <div class="drawer-links">{links}</div>
+            <div class="drawer-links" style="margin-top:10px;">
+                <a href="index.html">Hem</a>
+            </div>
+        </aside>
+        """
 
-        for item in mina_kategorier:
-            current_imgs = data[item["parent"]][item["name"]]
-            s_nav = f'<div class="sidebar-nav">{main_logo_html}<img src="{logga}" class="sidebar-logo" onclick="location.href=\'index.html\'">'
-            for nav_item in mina_kategorier:
-                active = "active" if nav_item["name"] == item["name"] else ""
-                s_nav += f'<a href="{nav_item["url"]}" class="side-btn {active}">{nav_item["name"].lower()}</a>'
-            s_nav += '<a href="index.html" class="side-btn" style="margin-top:20px; border-color: rgba(255,255,255,0.7); font-weight: bold; background: rgba(255,255,255,0.1);">hem</a></div>'
-            
-            cards = "".join([f'<div class="card" onclick=\'openLightbox("{i["src"]}", "{i["title"]}", currentGallery)\'><img src="{i["src"]}"><div class="img-title">{i["title"]}</div></div>' for i in current_imgs])
-            galleri_page = f"<!DOCTYPE html><html><head><meta charset='UTF-8'><link rel='stylesheet' href='style.css?v={ts}'></head><body>{s_nav}<nav class='nav-bar'><div class='container'><ul class='nav-links'>{red_b}</ul></div></nav><div class='gallery-space'><div class='grid'>{cards}</div></div>{lb_h}<script>{common_js} const currentGallery = {current_imgs};</script></body></html>"
-            with open(item["url"], "w", encoding="utf-8") as f: f.write(galleri_page)
+    def artist_drawer(items, current_url, title):
+        links = "".join(
+            [
+                f'<a class="{"active" if item["url"] == current_url else ""}" href="{item["url"]}">{display_category(item["cat"])}</a>'
+                for item in items
+            ]
+        )
+        return f"""
+        <div id="drawer" class="drawer">
+            <h3>{title}</h3>
+            <div class="drawer-links">{links}</div>
+            <div class="drawer-links" style="margin-top:10px;">
+                <a href="index.html">Hem</a>
+                <a href="val_suss.html">Loströms nav</a>
+                <a href="val_anti.html">Antiart nav</a>
+            </div>
+        </div>
+        <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
+        """
 
-    print("✨ KLART! Bilderna på hemskärmen är nu uppflyttade.")
+    def bottom_nav(active_name, artist_url):
+        return f"""
+        <nav class="bottom-nav">
+            <a class="{'active' if active_name == 'home' else ''}" href="index.html">Hem</a>
+            <a class="{'active' if active_name == 'artist' else ''}" href="{artist_url}">Artister</a>
+            <button type="button" onclick="toggleDrawer()">Meny</button>
+        </nav>
+        """
+
+    welcome_html = f"""
+    <!DOCTYPE html>
+    <html lang="sv">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Art Portal</title>
+        <link rel="stylesheet" href="style.css?v={ts}" />
+    </head>
+    <body class="theme-home">
+        {app_bar('home')}
+        <div id="drawer" class="drawer">
+            <h3>Portalmeny</h3>
+            <div class="drawer-links">
+                <a href="index.html">Hem</a>
+                <a href="val_suss.html">Loströms miniatyrer</a>
+                <a href="val_anti.html">Antiart</a>
+            </div>
+        </div>
+        <div id="drawer-backdrop" class="drawer-backdrop" onclick="toggleDrawer(false)"></div>
+        <main class="page" style="display:block;">
+            <section class="hero">
+                <h1>Välkommen till The Art Portal</h1>
+                <p>Välj konstnär för att komma till rätt galleri. Varje sektion har eget tema och egen meny för snabb navigering.</p>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <span class="current">Hem</span>
+                </nav>
+            </section>
+            <section class="welcome-grid">
+                <a class="card portal-card" href="val_suss.html">
+                    <div class="logo-wrap"><img src="logo_suss.jpg" alt="Loströms miniatyrer" decoding="async" /></div>
+                    <h2>Loströms miniatyrer</h2>
+                    <p>Miniatyrbord, dioraman och utställningssamling.</p>
+                    <div class="chips"><span class="chip">Bord</span><span class="chip">Dioraman</span><span class="chip">Samling</span></div>
+                </a>
+                <a class="card portal-card" href="val_anti.html">
+                    <div class="logo-wrap"><img src="logo_antichrister.jpg" alt="Antiart" decoding="async" /></div>
+                    <h2>Antiart</h2>
+                    <p>Tavlor i flera uttryck samt blandteknik och originalverk.</p>
+                    <div class="chips"><span class="chip">Diverse</span><span class="chip">Miniart</span><span class="chip">Mixed Media</span></div>
+                </a>
+            </section>
+        </main>
+        {bottom_nav('home', 'val_suss.html')}
+        <script src="app.js?v={ts}"></script>
+    </body>
+    </html>
+    """
+
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(welcome_html)
+
+    def artist_hub(filename, body_class, title, subtitle, logo, artist_key, items):
+        nav_links = "".join([f'<a class="artist-link" href="{item["url"]}">{display_category(item["cat"])}</a>' for item in items])
+        html = f"""
+        <!DOCTYPE html>
+        <html lang="sv">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>{title}</title>
+            <link rel="stylesheet" href="style.css?v={ts}" />
+        </head>
+        <body class="{body_class}">
+            {app_bar(artist_key)}
+            {artist_drawer(items, '', title + ' arkiv')}
+            <main class="page" style="display:block;">
+                <section class="hero">
+                    <h1>{title}</h1>
+                    <p>{subtitle}</p>
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <a href="index.html">Hem</a>
+                        <span class="sep">/</span>
+                        <span class="current">{title}</span>
+                    </nav>
+                </section>
+                <section class="artist-grid">
+                    <article class="card portal-card">
+                        <div class="logo-wrap"><img src="{logo}" alt="{title}" decoding="async" /></div>
+                        <h2>{title}</h2>
+                        <p>Utforska alla gallerier i denna sektion.</p>
+                        <div class="artist-nav">{nav_links}</div>
+                    </article>
+                </section>
+            </main>
+            {bottom_nav('artist', filename)}
+            <script src="app.js?v={ts}"></script>
+        </body>
+        </html>
+        """
+        with open(filename, "w", encoding="utf-8") as out:
+            out.write(html)
+
+    artist_hub(
+        "val_suss.html",
+        "theme-lostrom",
+        "Loströms miniatyrer",
+        "Miniatyrer med tydligt fokus på dioraman, bord och utställning.",
+        "logo_suss.jpg",
+        "lostrom",
+        lostrom_categories,
+    )
+
+    artist_hub(
+        "val_anti.html",
+        "theme-anti",
+        "Antiart",
+        "Måleri, mixed media och miniart i flera kategorier.",
+        "logo_antichrister.jpg",
+        "anti",
+        anti_categories,
+    )
+
+    for item in anti_categories + lostrom_categories:
+        images = data[item["folder"]][item["cat"]]
+        is_anti = "Antiart" in item["folder"]
+        theme_class = "theme-anti" if is_anti else "theme-lostrom"
+        artist_hub_url = "val_anti.html" if is_anti else "val_suss.html"
+        artist_name = "Antiart" if is_anti else "Loströms miniatyrer"
+        artist_items = anti_categories if is_anti else lostrom_categories
+        artist_key = "anti" if is_anti else "lostrom"
+
+        cards = "".join(
+            [
+                f'<article class="card gallery-card" onclick="openLightbox(\'{img["src"]}\', \'{img["title"]}\', currentGallery)">'
+                f'<img src="{img["src"]}" alt="{img["title"]}" loading="lazy" decoding="async" />'
+                f'<div class="gallery-title">{img["title"]}</div>'
+                "</article>"
+                for img in images
+            ]
+        )
+
+        page_html = f"""
+        <!DOCTYPE html>
+        <html lang="sv">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>{artist_name} - {display_category(item['cat'])}</title>
+            <link rel="stylesheet" href="style.css?v={ts}" />
+        </head>
+        <body class="{theme_class}">
+            {app_bar(artist_key)}
+            {artist_drawer(artist_items, item['url'], artist_name + ' arkiv')}
+            <main class="page">
+                {artist_sidebar(artist_items, item['url'], artist_name + ' arkiv')}
+                <section class="content">
+                    <section class="hero">
+                        <h1>{artist_name} / {display_category(item['cat'])}</h1>
+                        <p>Du är i den här sektionen. Byt galleri via artistmenyn eller gå tillbaka till Hem.</p>
+                        <nav class="breadcrumb" aria-label="Breadcrumb">
+                            <a href="index.html">Hem</a>
+                            <span class="sep">/</span>
+                            <a href="{artist_hub_url}">{artist_name}</a>
+                            <span class="sep">/</span>
+                            <span class="current">{display_category(item['cat'])}</span>
+                        </nav>
+                        <div class="artist-nav">{''.join([f'<a class="artist-link {'active' if nav['url'] == item['url'] else ''}" href="{nav['url']}">{display_category(nav['cat'])}</a>' for nav in artist_items])}</div>
+                    </section>
+                    <section class="gallery-grid">{cards}</section>
+                </section>
+            </main>
+            {bottom_nav('artist', artist_hub_url)}
+            {lightbox_html}
+            <script src="app.js?v={ts}"></script>
+            <script>const currentGallery = {images};</script>
+        </body>
+        </html>
+        """
+
+        with open(item["url"], "w", encoding="utf-8") as out:
+            out.write(page_html)
+
+    print("Klart! Portalen är ombyggd med artistsektioner och mobilnavigering.")
+
 
 if __name__ == "__main__":
     bygg()
