@@ -17,12 +17,18 @@ body {
     margin: 0;
     font-family: "Trebuchet MS", "Segoe UI", sans-serif;
     color: var(--text);
-    background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(57, 145, 255, 0.14), transparent 60%),
-        radial-gradient(900px 600px at 100% -20%, rgba(28, 183, 122, 0.14), transparent 65%),
-        var(--bg);
+    background: url('background.jpg') center / cover no-repeat fixed;
     min-height: 100vh;
     padding-bottom: 92px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(rgba(8, 12, 20, 0.62), rgba(8, 12, 20, 0.62));
+    pointer-events: none;
+    z-index: -1;
 }
 
 body.theme-anti {
@@ -505,7 +511,7 @@ img {
 .landing-hero {
     position: relative;
     min-height: clamp(260px, 50vh, 520px);
-    background: url('background.jpg') center / cover no-repeat;
+    background: transparent;
     display: flex;
     align-items: flex-end;
 }
@@ -561,7 +567,7 @@ img {
 /* ─── Konstnärskort (MD3 elevated cards) ─── */
 .artist-showcase {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 24px auto;
@@ -599,15 +605,20 @@ img {
 
 .artist-feature-card .portrait-wrap {
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
     border-bottom: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.9);
+    min-height: clamp(260px, 36vw, 380px);
+    display: grid;
+    place-items: center;
 }
 
 .artist-feature-card .portrait-wrap img {
     width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+    height: clamp(240px, 34vw, 360px);
+    object-fit: contain;
     display: block;
+    padding: 16px;
     transition: transform 0.45s ease;
 }
 
@@ -617,6 +628,12 @@ img {
 
 .artist-feature-card .card-body {
     padding: 20px 22px 24px;
+}
+
+@media (max-width: 900px) {
+    .artist-showcase {
+        grid-template-columns: 1fr;
+    }
 }
 
 .artist-feature-card .card-label {
