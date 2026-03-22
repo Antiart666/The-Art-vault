@@ -755,7 +755,8 @@ body[data-theme="dark"] .switch-thumb {
 .home-portal-card img {
     width: 100%;
     height: clamp(100px, 12vw, 160px);
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 16px;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
     position: relative;
     z-index: 1;
@@ -849,11 +850,9 @@ body[data-theme="dark"] .home-portal-card:hover {
     }
 
     .home-portal-card img {
-        width: min(100%, 168px);
-        max-width: 100%;
-        height: auto;
-        max-height: 132px;
-        align-self: center;
+        width: 100%;
+        height: clamp(120px, 38vw, 160px);
+        align-self: stretch;
     }
 
     .home-portal-copy {
