@@ -217,7 +217,7 @@ def build_homepage(ts):
                     </div>
                 </a>
                 <a class="home-portal-card card-anti" href="val_anti.html" aria-label="Öppna Antiart">
-                    <img src="logo_antichrister.jpg" alt="Antiart" decoding="async" />
+                    <img src="antichrister.jpg" alt="Antiart" decoding="async" />
                     <div class="home-portal-copy">
                         <h2>Antiart</h2>
                         <p>Måleri &amp; mixed media</p>
@@ -253,14 +253,8 @@ def artist_hub(filename, body_class, title, subtitle, logo, artist_key, items, t
             <article class="card artist-hub-module">
                 <div class="artist-hub-media"><img src="{logo}" alt="{title}" decoding="async" /></div>
                 <div class="artist-hub-body">
-                    <p class="artist-hub-kicker">Konstnärssektion</p>
                     <h1>{title}</h1>
                     <p>{subtitle}</p>
-                    <nav class="breadcrumb" aria-label="Breadcrumb">
-                        <a href="index.html">Hem</a>
-                        <span class="sep">/</span>
-                        <span class="current">{title}</span>
-                    </nav>
                     <div class="artist-nav"><a class="artist-link home-link" href="index.html">Hem</a>{nav_links}</div>
                 </div>
             </article>
@@ -334,7 +328,7 @@ def bygg():
         "theme-anti",
         "Antiart",
         "Måleri, mixed media och miniart i flera kategorier.",
-        "logo_antichrister.jpg",
+        "antichrister.jpg",
         "anti",
         anti_categories,
         ts,
