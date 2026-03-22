@@ -118,22 +118,17 @@ def app_bar(active_artist):
     anti_active = "accent" if active_artist == "anti" else ""
     lostrom_active = "accent" if active_artist == "lostrom" else ""
     return f"""
-    <header class="top-shell">
-        <div class="top-header-banner" aria-hidden="true">
-            <img src="Namnlös.jpg" alt="" decoding="async" />
-        </div>
-        <p class="top-shell-intro">Miniatyrer och Antiart. Välj konstnär för att utforska deras verk.</p>
-        <div class="top-left">
+    <header class="top-shell" style="background-image: url('logga med bild.png')">
+        <div class="top-shell-controls">
             <nav class="top-nav" aria-label="Huvudnavigation">
                 <a class="btn" href="index.html">Hem</a>
-                <a class="btn {lostrom_active}" href="val_suss.html">Miniatyrer</a>
+                <a class="btn {lostrom_active}" href="val_suss.html">Miniatyrier</a>
                 <a class="btn {anti_active}" href="val_anti.html">Antiart</a>
             </nav>
             <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="Växla ljust och mörkt tema" onclick="toggleTheme()">
                 <span class="switch-track"><span class="switch-thumb"></span></span>
                 <span class="switch-label">Tema</span>
             </button>
-            <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
         </div>
     </header>
     """
