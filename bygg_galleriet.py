@@ -118,7 +118,8 @@ def app_bar(active_artist):
     anti_active = "accent" if active_artist == "anti" else ""
     lostrom_active = "accent" if active_artist == "lostrom" else ""
     return f"""
-    <header class="top-shell" style="background-image: url('logga med bild.png')">
+    <header class="top-shell">
+        <img src="logga med bild.png" alt="Logga" class="top-shell-image" decoding="async" />
         <div class="top-shell-controls">
             <nav class="top-nav" aria-label="Huvudnavigation">
                 <a class="btn" href="index.html">Hem</a>
