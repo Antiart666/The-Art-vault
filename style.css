@@ -135,20 +135,26 @@ img {
 }
 
 .top-logo {
+    grid-column: 3;
+    grid-row: 2;
     justify-self: center;
+    align-self: center;
     display: grid;
     place-items: center;
-    width: 100%;
+    width: min(100%, 360px);
+    z-index: 2;
 }
 
 .top-logo img {
-    width: clamp(260px, 36vw, 540px);
-    max-height: clamp(98px, 14vw, 176px);
+    width: min(92%, 340px);
+    max-height: clamp(96px, 12vw, 154px);
     object-fit: contain;
     filter: drop-shadow(0 9px 22px rgba(7, 9, 15, 0.3));
 }
 
 .top-art-panel {
+    grid-column: 3;
+    grid-row: 2;
     justify-self: end;
     width: min(100%, 360px);
     min-height: clamp(132px, 17vw, 202px);
@@ -729,6 +735,28 @@ body[data-theme="dark"] .switch-thumb {
     padding: clamp(22px, 4vw, 34px);
 }
 
+@media (min-width: 901px) {
+    .home-stage {
+        width: min(72%, 900px);
+    }
+
+    .home-stage-overlay {
+        grid-template-columns: repeat(2, minmax(0, 320px));
+        align-content: stretch;
+        align-items: start;
+        justify-content: space-between;
+    }
+
+    .home-portal-card {
+        align-self: start;
+    }
+
+    .home-portal-card.card-anti {
+        align-self: end;
+        margin-top: clamp(110px, 14vw, 180px);
+    }
+}
+
 .home-portal-card {
     display: grid;
     gap: 12px;
@@ -796,7 +824,11 @@ body[data-theme="dark"] .home-portal-card {
 
     .home-stage {
         width: 100%;
-        min-height: clamp(260px, 64vw, 420px);
+        min-height: clamp(320px, 78vw, 430px);
+    }
+
+    .home-stage-overlay {
+        align-content: space-between;
     }
 }
 
@@ -807,26 +839,27 @@ body[data-theme="dark"] .home-portal-card {
     }
 
     .home-stage-overlay {
-        padding: 16px;
-        gap: 14px;
+        padding: 14px;
+        gap: 10px;
     }
 
     .home-portal-card,
     .home-portal-card.card-anti {
         width: 100%;
         justify-self: stretch;
+        padding: 14px 16px;
     }
 
     .home-portal-card img {
-        height: clamp(66px, 18vw, 92px);
+        height: clamp(58px, 16vw, 82px);
     }
 
     .home-portal-copy h2 {
-        font-size: 1rem;
+        font-size: 0.96rem;
     }
 
     .home-portal-copy p {
-        font-size: 0.88rem;
+        font-size: 0.82rem;
     }
 }
 
@@ -868,11 +901,16 @@ body[data-theme="dark"] .home-portal-card {
     }
 
     .top-logo {
-        order: 1;
+        order: 2;
+        grid-column: 1;
+        grid-row: 2;
+        width: min(100%, 520px);
     }
 
     .top-art-panel {
-        order: 2;
+        order: 1;
+        grid-column: 1;
+        grid-row: 2;
         justify-self: center;
         width: min(100%, 520px);
         min-height: 168px;
