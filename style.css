@@ -105,14 +105,32 @@ img {
     background: var(--top-shell-bg);
     box-shadow: var(--top-shell-shadow);
     display: grid;
-    grid-template-columns: minmax(260px, 1fr) minmax(280px, 1.1fr) minmax(260px, 1fr);
+    grid-template-columns: 1fr;
+    justify-items: center;
     gap: clamp(12px, 2.4vw, 22px);
     align-items: center;
     animation: heroRise 480ms cubic-bezier(0.2, 0, 0, 1);
 }
 
+.top-header-banner {
+    width: min(100%, 1080px);
+    min-height: clamp(138px, 18vw, 228px);
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 10px 24px rgba(8, 12, 20, 0.24);
+    background: var(--hero-panel-bg);
+}
+
+.top-header-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.05) contrast(1.03);
+}
+
 .top-shell-intro {
-    grid-column: 1 / -1;
     margin: 0;
     text-align: center;
     color: var(--top-nav-text);
@@ -122,10 +140,15 @@ img {
 }
 
 .top-left {
+    grid-column: 1 / -1;
     display: flex;
     align-items: center;
+    align-self: end;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 10px;
+    width: 100%;
+    margin-top: auto;
 }
 
 .top-nav {
@@ -903,27 +926,13 @@ body[data-theme="dark"] .home-portal-card {
         padding: 14px;
     }
 
-    .top-logo {
-        order: 1;
-        grid-column: 1;
-        grid-row: 2;
-        justify-self: center;
-        width: min(100%, 520px);
-        min-height: 168px;
-    }
-
-    .top-art-panel {
-        order: 1;
-        grid-column: 1;
-        grid-row: 2;
-        justify-self: center;
+    .top-header-banner {
         width: min(100%, 520px);
         min-height: 168px;
     }
 
     .top-left {
-        order: 3;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .top-shell-intro {
@@ -932,26 +941,17 @@ body[data-theme="dark"] .home-portal-card {
 }
 
 @media (max-width: 520px) {
-    .top-logo img {
-        width: 100%;
-        height: 100%;
-    }
-
-    .top-logo {
-        min-height: 148px;
-    }
-
-    .top-art-panel {
+    .top-header-banner {
         min-height: 148px;
     }
 
     .top-left {
         width: 100%;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .top-nav {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .top-shell-intro {

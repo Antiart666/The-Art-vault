@@ -119,6 +119,9 @@ def app_bar(active_artist):
     lostrom_active = "accent" if active_artist == "lostrom" else ""
     return f"""
     <header class="top-shell">
+        <div class="top-header-banner" aria-hidden="true">
+            <img src="Namnlös.jpg" alt="" decoding="async" />
+        </div>
         <p class="top-shell-intro">Miniatyrer och Antiart. Välj konstnär för att utforska deras verk.</p>
         <div class="top-left">
             <nav class="top-nav" aria-label="Huvudnavigation">
@@ -132,9 +135,6 @@ def app_bar(active_artist):
             </button>
             <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
         </div>
-        <a class="top-logo" href="index.html">
-            <img src="Namnlös.jpg" alt="The Art Vault" decoding="async" />
-        </a>
     </header>
     """
 
