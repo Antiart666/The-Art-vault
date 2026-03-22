@@ -133,11 +133,8 @@ def app_bar(active_artist):
             <button class="icon-btn only-mobile" onclick="toggleDrawer()">☰</button>
         </div>
         <a class="top-logo" href="index.html">
-            <img src="logo_main.png" alt="The Art Vault" decoding="async" />
+            <img src="Namnlös.jpg" alt="The Art Vault" decoding="async" />
         </a>
-        <div class="top-art-panel" aria-hidden="true">
-            <img src="background.jpg" alt="" decoding="async" />
-        </div>
     </header>
     """
 
