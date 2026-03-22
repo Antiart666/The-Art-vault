@@ -84,6 +84,13 @@ img {
     letter-spacing: 0.3px;
 }
 
+.brand span {
+    color: #141923;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 .brand img {
     width: clamp(150px, 22vw, 280px);
     height: auto;
@@ -519,33 +526,45 @@ img {
 /* ─── Landing hero med background.jpg ─── */
 .landing-hero {
     position: relative;
-    min-height: clamp(260px, 50vh, 520px);
+    min-height: clamp(200px, 42vh, 360px);
     background: transparent;
-    display: flex;
-    align-items: flex-end;
+    display: grid;
+    align-items: end;
+    padding: clamp(22px, 4vw, 40px) 14px 0;
 }
 
 .landing-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to top,
-        rgba(8, 10, 22, 0.88) 0%,
-        rgba(8, 10, 22, 0.45) 55%,
-        rgba(8, 10, 22, 0.18) 100%
-    );
-    pointer-events: none;
+    content: none;
 }
 
 .landing-hero-content {
     position: relative;
-    z-index: 1;
-    padding: clamp(22px, 6vw, 56px) clamp(16px, 4vw, 56px);
+    z-index: 2;
+    padding: clamp(22px, 5vw, 42px) clamp(16px, 4vw, 52px);
     color: white;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+}
+
+.landing-hero-surface {
+    border-radius: clamp(20px, 4vw, 32px);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: linear-gradient(155deg, rgba(9, 13, 19, 0.9), rgba(15, 19, 27, 0.76));
+    backdrop-filter: blur(8px);
+    box-shadow: var(--md-elev-3);
+    display: grid;
+    justify-items: center;
+    gap: clamp(14px, 2.4vw, 20px);
+    text-align: center;
+    animation: heroRise 560ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.landing-main-logo {
+    width: clamp(240px, 48vw, 620px);
+    max-height: clamp(110px, 19vw, 220px);
+    object-fit: contain;
+    filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.38));
 }
 
 .landing-hero-label {
@@ -567,10 +586,10 @@ img {
 
 .landing-hero-sub {
     margin: 0;
-    max-width: 56ch;
+    max-width: 62ch;
     font-size: clamp(0.98rem, 2.8vw, 1.12rem);
     line-height: 1.6;
-    opacity: 0.9;
+    opacity: 0.94;
 }
 
 /* ─── Konstnärskort (MD3 elevated cards) ─── */
@@ -579,7 +598,7 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     max-width: 1200px;
-    margin: 24px auto;
+    margin: 22px auto;
     padding: 0 14px 56px;
 }
 
@@ -593,6 +612,11 @@ img {
     transition: box-shadow 0.28s ease, transform 0.28s ease;
     text-decoration: none;
     color: inherit;
+    animation: cardRise 580ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.artist-feature-card:nth-child(2) {
+    animation-delay: 90ms;
 }
 
 .artist-feature-card:hover {
@@ -686,4 +710,98 @@ img {
 
 .artist-feature-card:hover .md3-explore-btn {
     filter: brightness(1.12);
+}
+
+@keyframes heroRise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardRise {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .landing-hero-surface,
+    .artist-feature-card {
+        animation: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .landing-hero {
+        min-height: clamp(180px, 36vh, 280px);
+        padding-top: 18px;
+    }
+
+    .landing-hero-content {
+        padding: clamp(18px, 4vw, 28px) clamp(14px, 4vw, 24px);
+    }
+
+    .landing-main-logo {
+        width: clamp(220px, 70vw, 480px);
+        max-height: clamp(96px, 24vw, 170px);
+    }
+
+    .landing-hero-sub {
+        max-width: 44ch;
+    }
+}
+
+@media (max-width: 520px) {
+    .landing-hero {
+        padding-left: 10px;
+        padding-right: 10px;
+        min-height: clamp(170px, 34vh, 240px);
+    }
+
+    .landing-hero-surface {
+        border-radius: 18px;
+        gap: 12px;
+    }
+
+    .landing-main-logo {
+        width: clamp(210px, 78vw, 360px);
+        max-height: 120px;
+    }
+
+    .landing-hero-sub {
+        font-size: clamp(0.9rem, 4.1vw, 1rem);
+        line-height: 1.5;
+    }
+}
+
+@media (min-width: 390px) and (max-width: 430px) {
+    .landing-hero {
+        min-height: 270px;
+        padding-top: 22px;
+    }
+
+    .landing-hero-content {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .landing-main-logo {
+        width: 84vw;
+        max-width: 400px;
+        max-height: 138px;
+    }
+
+    .landing-hero-sub {
+        font-size: 0.96rem;
+    }
 }
