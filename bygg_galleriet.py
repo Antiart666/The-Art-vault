@@ -87,17 +87,21 @@ img {
 .brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0;
     font-weight: 700;
     letter-spacing: 0.3px;
 }
 
 .brand img {
-    width: 36px;
-    height: 36px;
-    border-radius: 11px;
-    object-fit: cover;
-    border: 1px solid var(--line);
+    width: clamp(150px, 22vw, 280px);
+    height: auto;
+    max-height: 56px;
+    border-radius: 12px;
+    object-fit: contain;
+    border: 0;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 4px 8px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.28);
 }
 
 .app-actions {
@@ -486,8 +490,9 @@ img {
         gap: 6px;
     }
 
-    .brand span {
-        font-size: 0.9rem;
+    .brand img {
+        width: clamp(120px, 45vw, 190px);
+        max-height: 48px;
     }
 
     .app-actions {
@@ -826,7 +831,6 @@ def bygg():
         <header class="app-bar">
             <a class="brand" href="index.html">
                 <img src="logo_main.png" alt="Portal" />
-                <span>The Art Portal</span>
             </a>
             <div class="app-actions">
                 <a class="btn" href="index.html">Hem</a>
@@ -889,7 +893,7 @@ def bygg():
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>The Art Portal</title>
+        <title>Loströms miniatyrer och Antiart</title>
         <link rel="stylesheet" href="style.css?v={ts}" />
     </head>
     <body class="theme-home">
@@ -906,8 +910,6 @@ def bygg():
 
         <div class="landing-hero">
             <div class="landing-hero-content">
-                <p class="landing-hero-label">Konstportal</p>
-                <h1 class="landing-hero-title">The Art Portal</h1>
                 <p class="landing-hero-sub">Välj konstnär för att utforska deras verk — två unika konstuttryck under ett tak.</p>
             </div>
         </div>
